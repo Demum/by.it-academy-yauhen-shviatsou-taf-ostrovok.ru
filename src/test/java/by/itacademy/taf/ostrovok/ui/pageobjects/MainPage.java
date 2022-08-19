@@ -11,6 +11,8 @@ public class MainPage extends BasePage {
     private WebElement buttonSignUp;
     @FindBy(xpath = "//input[@name='email']")
     private WebElement inputEmail;
+    @FindBy(xpath = "//div[@class='Authorization-module__error--17cEq']")
+    private WebElement errorPleaseEnterValidEmail;
 
     @FindBy(xpath = "//button[@data-testid='user-widget-sign-up-button']")
     private WebElement clickButtonSignUpWithCreatedEmail;
@@ -20,9 +22,6 @@ public class MainPage extends BasePage {
     private WebElement inputDestination;
     @FindBy(xpath = "//div[@data-testid='date-start-input']")
     private WebElement checkInDatePicker;
-
-
-
 
 
     public MainPage openPage(){
@@ -40,9 +39,14 @@ public class MainPage extends BasePage {
         buttonSignUp.click();
         return this;
     }
-    public MainPage typeEmail() {
+    public MainPage typeRandomValidEmail() {
         inputEmail.clear();
         inputEmail.sendKeys(RandomValue.randomValidEmail);
+        return this;
+    }
+    public MainPage typeRandomInValidEmail() {
+        inputEmail.clear();
+        inputEmail.sendKeys(RandomValue.randomInValidEmail);
         return this;
     }
 
@@ -61,4 +65,12 @@ public class MainPage extends BasePage {
         waitForVisibilityOfElement(userEmailINnMainPage);
         return userEmailINnMainPage.getAttribute("innerHTML");
          }
+
+
+    public boolean isDisplayedErrorPleaseEnterValidEmail(){
+    waitForVisibilityOfElement(errorPleaseEnterValidEmail);
+    return errorPleaseEnterValidEmail.isDisplayed();
     }
+
+
+}

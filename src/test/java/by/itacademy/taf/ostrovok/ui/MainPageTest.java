@@ -8,21 +8,23 @@ import org.testng.annotations.Test;
 public class MainPageTest extends BaseTest {
     @Test
     public void testLogInWithValidValueMainSearchPage() {
-        //GIVEN
-
         MainPage mainPage = new MainPage();
-
         mainPage.openPage()
                         .clickButtonLogin()
                         .clickButtonSignUp()
-                        .typeEmail()
+                        .typeRandomValidEmail()
                         .clickButtonSignUpWithCreatedEmail();
-        System.out.println(mainPage.getUserEmail());
         Assert.assertEquals(mainPage.getUserEmail(), RandomValue.randomValidEmail);
       }
 
       @Test
     public void testLogInWithInValidValueMainSearchPage(){
-
+          MainPage mainPage = new MainPage();
+          mainPage.openPage()
+                  .clickButtonLogin()
+                  .clickButtonSignUp()
+                  .typeRandomInValidEmail()
+                  .clickButtonSignUpWithCreatedEmail();
+Assert.assertTrue(mainPage.isDisplayedErrorPleaseEnterValidEmail());
       }
-}
+      }
