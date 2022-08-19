@@ -59,6 +59,6 @@ public class MainPage extends BasePage {
     }
     public String getUserEmail(){
         waitForVisibilityOfElement(userEmailINnMainPage);
-        return userEmailINnMainPage.getText();
+        return userEmailINnMainPage.getAttribute("innerHTML");
          }
     }

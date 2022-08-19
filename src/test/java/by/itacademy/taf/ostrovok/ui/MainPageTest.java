@@ -9,14 +9,16 @@ public class MainPageTest extends BaseTest {
     @Test
     public void testLogInWithValidValueMainSearchPage() {
         //GIVEN
+
         MainPage mainPage = new MainPage();
+
         mainPage.openPage()
                         .clickButtonLogin()
                         .clickButtonSignUp()
                         .typeEmail()
                         .clickButtonSignUpWithCreatedEmail();
+        System.out.println(mainPage.getUserEmail());
         Assert.assertEquals(mainPage.getUserEmail(), RandomValue.randomValidEmail);
-
       }
 
       @Test
