@@ -1,19 +1,26 @@
 package by.itacademy.taf.ostrovok.ui;
 
-import by.itacademy.taf.ostrovok.ui.pageobjects.MainSearchPage;
+import by.itacademy.taf.ostrovok.ui.pageobjects.MainPage;
+import by.itacademy.taf.ostrovok.ui.utils.RandomValue;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class MainPageTest extends BaseTest {
     @Test
-    public void testLogInMainSearchPage() throws InterruptedException {
+    public void testLogInWithValidValueMainSearchPage() {
         //GIVEN
-        MainSearchPage mainSearchPage = new MainSearchPage();
-        mainSearchPage.openPage()
+        MainPage mainPage = new MainPage();
+        mainPage.openPage()
                         .clickButtonLogin()
-                .clickButtonSignUp()
-                                .typeEmail()
-                                        .clickButtonSignUpWithCreatedEmail();
+                        .clickButtonSignUp()
+                        .typeEmail()
+                        .clickButtonSignUpWithCreatedEmail();
+        Assert.assertEquals(mainPage.getUserEmail(), RandomValue.randomValidEmail);
 
-        Thread.sleep(3000);
-    }
+      }
+
+      @Test
+    public void testLogInWithInValidValueMainSearchPage(){
+
+      }
 }
