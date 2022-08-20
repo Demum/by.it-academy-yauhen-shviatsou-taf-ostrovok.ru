@@ -2,7 +2,6 @@ package by.itacademy.taf.ostrovok.ui.pageobjects;
 
 import by.itacademy.taf.ostrovok.ui.utils.DatePicker;
 import by.itacademy.taf.ostrovok.ui.utils.RandomValue;
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -25,6 +24,9 @@ public class MainPage extends BasePage {
     private WebElement inputDestination;
     @FindBy(xpath = "//div[@data-testid='date-start-input']")
     private WebElement buttonCheckInDatePicker;
+    @FindBy(xpath = "//div[@class='Suggest-module__destination--17nJ9'][@title='Heliport De Paris, France']")
+    private WebElement suggestDestination;
+
 
     String inputDestinationSting="Heliport De Paris, France";
 
@@ -75,6 +77,7 @@ public class MainPage extends BasePage {
 
     public MainPage typeDestination() {
        waitForVisibilityOfElement(inputDestination);
+       inputDestination.clear();
        inputDestination.sendKeys(inputDestinationSting);
         return this;
     }
@@ -107,11 +110,11 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public MainPage clickEnterInputDestination() throws InterruptedException {
-      //  Thread.sleep(1000);
-        waitForVisibilityOfElement(driver.findElement(ENTERED_INPUT_DESTINATION));
-        waitForElementToBeClickable(driver.findElement(ENTERED_INPUT_DESTINATION));
-        inputDestination.sendKeys(Keys.ENTER);
+    public MainPage clickSugestDestination() throws InterruptedException {
+
+       waitForVisibilityOfElement(suggestDestination);
+        suggestDestination.click();
+
         return this;
     }
 }

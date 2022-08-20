@@ -34,10 +34,11 @@ public class MainPageTest extends BaseTest {
         MainPage mainPage = new MainPage();
         mainPage.openPage()
                 .typeDestination()
-                .clickEnterInputDestination()
+                .clickSugestDestination()
                 .clickButtonCheckInDatePicker()
                 .clickDatePickerCheckIn()
                 .clickDatePickerCheckOut();
+
         Thread.sleep(1000);
     }
 
