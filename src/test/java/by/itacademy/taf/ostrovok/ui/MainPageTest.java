@@ -1,6 +1,7 @@
 package by.itacademy.taf.ostrovok.ui;
 
 import by.itacademy.taf.ostrovok.ui.pageobjects.MainPage;
+import by.itacademy.taf.ostrovok.ui.utils.DatePicker;
 import by.itacademy.taf.ostrovok.ui.utils.RandomValue;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -33,18 +34,23 @@ public class MainPageTest extends BaseTest {
     }
 
     @Test
-    public void testSearchMainPage() {
-        MainPage mainPage = new MainPage();
-        mainPage.openPage()
-                .typeDestination()
-                .clickCheckInDatePicker();
-        Calendar calendar = new GregorianCalendar();
-        Date date = calendar.getTime();
-        System.out.println(date);
-        calendar.add(Calendar.DATE, +7);
-        Date date2 = calendar.getTime();
-        System.out.println(date2);
+    public void testSearchMainPage() throws InterruptedException {
+//        MainPage mainPage = new MainPage();
+//        mainPage.openPage()
+//                .typeDestination()
+//                .clickButtonCheckInDatePicker()
+//                .clickDatePickerCheckIn()
+//                .clickDatePickerCheckOut();
+//        Thread.sleep(3000);
+
+
+
+
+      DatePicker datePicker = new DatePicker();
+        System.out.println(datePicker.pickCheckInDate());
+        System.out.println(datePicker.pickCheckOutDate());
+    }
+
 
     }
 
-}

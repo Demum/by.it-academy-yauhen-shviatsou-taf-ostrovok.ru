@@ -23,34 +23,43 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//div[@data-testid='date-start-input']")
     private WebElement buttonCheckInDatePicker;
 
+    @FindBy(xpath = "//div[contains(@data-day, 'Sun Aug 21 2022')]")
+    private WebElement datePickerChenIn;
 
-    public MainPage openPage(){
+    @FindBy(xpath = "//div[contains(@data-day, 'Sat Sep 03 2022')]")
+    private WebElement datePickerChenOut;
+
+
+    public MainPage openPage() {
         driver.get(BasePage.BASE_URL);
         return this;
     }
 
-    public MainPage clickButtonLogin(){
+    public MainPage clickButtonLogin() {
         waitForElementToBeClickable(buttonLogin);
         buttonLogin.click();
         return this;
     }
-    public MainPage clickButtonSignUp(){
+
+    public MainPage clickButtonSignUp() {
         waitForVisibilityOfElement(buttonSignUp);
         buttonSignUp.click();
         return this;
     }
+
     public MainPage typeRandomValidEmail() {
         inputEmail.clear();
         inputEmail.sendKeys(RandomValue.randomValidEmail);
         return this;
     }
+
     public MainPage typeRandomInValidEmail() {
         inputEmail.clear();
         inputEmail.sendKeys(RandomValue.randomInValidEmail);
         return this;
     }
 
-    public MainPage clickButtonSignUpWithCreatedEmail(){
+    public MainPage clickButtonSignUpWithCreatedEmail() {
         waitForElementToBeClickable(clickButtonSignUpWithCreatedEmail);
         clickButtonSignUpWithCreatedEmail.click();
         return this;
@@ -61,19 +70,32 @@ public class MainPage extends BasePage {
         inputDestination.sendKeys("Paris, Ile-de-France, France");
         return this;
     }
-    public String getUserEmail(){
+
+    public String getUserEmail() {
         waitForVisibilityOfElement(userEmailINnMainPage);
         return userEmailINnMainPage.getAttribute("innerHTML");
-         }
-    public boolean isDisplayedErrorPleaseEnterValidEmail(){
-    waitForVisibilityOfElement(errorPleaseEnterValidEmail);
-    return errorPleaseEnterValidEmail.isDisplayed();
     }
 
-public MainPage clickCheckInDatePicker(){
-    waitForVisibilityOfElement(buttonCheckInDatePicker);
-    buttonCheckInDatePicker.click();
-    return this;
-}
+    public boolean isDisplayedErrorPleaseEnterValidEmail() {
+        waitForVisibilityOfElement(errorPleaseEnterValidEmail);
+        return errorPleaseEnterValidEmail.isDisplayed();
+    }
 
+    public MainPage clickButtonCheckInDatePicker() {
+        waitForElementToBeClickable(buttonCheckInDatePicker);
+        buttonCheckInDatePicker.click();
+        return this;
+    }
+
+    public MainPage clickDatePickerCheckIn() {
+        waitForElementToBeClickable(datePickerChenIn);
+        datePickerChenIn.click();
+        return this;
+    }
+
+    public MainPage clickDatePickerCheckOut() {
+                waitForElementToBeClickable(datePickerChenOut);
+        datePickerChenOut.click();
+        return this;
+    }
 }
