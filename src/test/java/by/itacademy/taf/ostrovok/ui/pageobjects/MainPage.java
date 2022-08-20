@@ -1,6 +1,10 @@
 package by.itacademy.taf.ostrovok.ui.pageobjects;
 
+import by.itacademy.taf.ostrovok.ui.utils.DatePicker;
 import by.itacademy.taf.ostrovok.ui.utils.RandomValue;
+import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -13,7 +17,6 @@ public class MainPage extends BasePage {
     private WebElement inputEmail;
     @FindBy(xpath = "//div[@class='Authorization-module__error--17cEq']")
     private WebElement errorPleaseEnterValidEmail;
-
     @FindBy(xpath = "//button[@data-testid='user-widget-sign-up-button']")
     private WebElement clickButtonSignUpWithCreatedEmail;
     @FindBy(xpath = "//div[@class='Control-module__username--3qcGq']")
@@ -23,11 +26,16 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//div[@data-testid='date-start-input']")
     private WebElement buttonCheckInDatePicker;
 
-    @FindBy(xpath = "//div[contains(@data-day, 'Sun Aug 21 2022')]")
-    private WebElement datePickerChenIn;
+    String inputDestinationSting="Heliport De Paris, France";
 
-    @FindBy(xpath = "//div[contains(@data-day, 'Sat Sep 03 2022')]")
-    private WebElement datePickerChenOut;
+    DatePicker datePicker = new DatePicker();
+
+
+    public  final By ENTERED_INPUT_DESTINATION = By.xpath("//input[@value='Heliport De Paris, France']");
+
+    public  final By DATE_PICKER_CHECK_IN = By.xpath("//div[contains(@data-day, '"+datePicker.pickCheckInDate()  +"')]");
+    public  final By DATE_PICKER_CHECK_OUT = By.xpath("//div[contains(@data-day, '"+datePicker.pickCheckOutDate()  +"')]");
+
 
 
     public MainPage openPage() {
@@ -66,10 +74,11 @@ public class MainPage extends BasePage {
     }
 
     public MainPage typeDestination() {
-        inputDestination.clear();
-        inputDestination.sendKeys("Paris, Ile-de-France, France");
+       waitForVisibilityOfElement(inputDestination);
+       inputDestination.sendKeys(inputDestinationSting);
         return this;
     }
+
 
     public String getUserEmail() {
         waitForVisibilityOfElement(userEmailINnMainPage);
@@ -87,15 +96,22 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public MainPage clickDatePickerCheckIn() {
-        waitForElementToBeClickable(datePickerChenIn);
-        datePickerChenIn.click();
+    public MainPage clickDatePickerCheckIn (){
+        waitForElementToBeClickable(driver.findElement(DATE_PICKER_CHECK_IN));
+        driver.findElement(DATE_PICKER_CHECK_IN).click();
+        return this;
+    }
+    public MainPage clickDatePickerCheckOut (){
+       waitForElementToBeClickable(driver.findElement(DATE_PICKER_CHECK_OUT));
+        driver.findElement(DATE_PICKER_CHECK_OUT).click();
         return this;
     }
 
-    public MainPage clickDatePickerCheckOut() {
-                waitForElementToBeClickable(datePickerChenOut);
-        datePickerChenOut.click();
+    public MainPage clickEnterInputDestination() throws InterruptedException {
+      //  Thread.sleep(1000);
+        waitForVisibilityOfElement(driver.findElement(ENTERED_INPUT_DESTINATION));
+        waitForElementToBeClickable(driver.findElement(ENTERED_INPUT_DESTINATION));
+        inputDestination.sendKeys(Keys.ENTER);
         return this;
     }
 }
