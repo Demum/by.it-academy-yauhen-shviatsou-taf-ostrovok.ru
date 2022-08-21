@@ -182,21 +182,21 @@ public class MainPage extends BasePage {
 
     public String getDisplayedButtonCheckInDatePickerText() {
         waitForVisibilityOfElement(buttonCheckInDatePicker);
-        return ifDateSmallerThenTen(buttonCheckInDatePicker);
+        return addZeroIfDateSmallerThenTen(buttonCheckInDatePicker);
     }
 
     public String getDisplayedButtonCheckOutDatePickerText() {
         waitForVisibilityOfElement(buttonCheckOutDatePicker);
-        return ifDateSmallerThenTen(buttonCheckOutDatePicker);
+        return addZeroIfDateSmallerThenTen(buttonCheckOutDatePicker);
     }
 
-    public String ifDateSmallerThenTen(WebElement webElement) {
-        String ifDateSmallerThenTenString = webElement.getText();
-        if (ifDateSmallerThenTenString.length() < 11) {
-            ifDateSmallerThenTenString = ifDateSmallerThenTenString.substring(0, 4) + "0" + ifDateSmallerThenTenString.substring(4);
-            return ifDateSmallerThenTenString;
+    public String addZeroIfDateSmallerThenTen(WebElement webElement) {
+        String addZeroIfDateSmallerThenTenString = webElement.getText();
+        if (addZeroIfDateSmallerThenTenString.length() < 11) {
+            addZeroIfDateSmallerThenTenString = addZeroIfDateSmallerThenTenString.substring(0, 4) + "0" + addZeroIfDateSmallerThenTenString.substring(4);
+            return addZeroIfDateSmallerThenTenString;
         }
-        return ifDateSmallerThenTenString;
+        return addZeroIfDateSmallerThenTenString;
     }
 
     public int getCountedNumberOfGuests() {
