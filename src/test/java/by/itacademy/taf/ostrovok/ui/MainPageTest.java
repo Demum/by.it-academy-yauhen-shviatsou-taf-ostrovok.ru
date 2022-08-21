@@ -15,7 +15,7 @@ public class MainPageTest extends BaseTest {
                 .clickButtonSignUp()
                 .typeRandomValidEmail()
                 .clickButtonSignUpWithCreatedEmail();
-        Assert.assertEquals(mainPage.getUserEmail(), RandomValue.randomValidEmail);
+        Assert.assertEquals(mainPage.getUserEmail(), RandomValue.randomValidEmail, "Entered email does not equals with account email");
     }
 
     @Test
@@ -26,7 +26,7 @@ public class MainPageTest extends BaseTest {
                 .clickButtonSignUp()
                 .typeRandomInValidEmail()
                 .clickButtonSignUpWithCreatedEmail();
-        Assert.assertTrue(mainPage.isDisplayedErrorPleaseEnterValidEmail());
+        Assert.assertTrue(mainPage.isDisplayedErrorPleaseEnterValidEmail(),"NOT Displayed Error Please Enter ValidEmail()");
     }
 
     @Test
@@ -46,10 +46,10 @@ public class MainPageTest extends BaseTest {
 
         mainPage.clickButtonDoneWithChild();
 
-       mainPage.getDisplayedNumberGuests();
-        System.out.println(mainPage.getCountedNumberOfGuests());
 
-        Thread.sleep(5000);
+
+Assert.assertEquals(mainPage.getDisplayedNumberGuests(), mainPage.getCountedNumberOfGuests(),"getDisplayedNumberGuests() does not equals getCountedNumberOfGuests()");
+        Thread.sleep(2000);
     }
 
 

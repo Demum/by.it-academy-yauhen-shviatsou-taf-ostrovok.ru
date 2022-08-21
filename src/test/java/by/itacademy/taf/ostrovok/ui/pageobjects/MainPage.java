@@ -189,8 +189,7 @@ public class MainPage extends BasePage {
   stringNumberGuests = stringNumberGuests.substring(0, 2);
    stringNumberGuests = stringNumberGuests.trim();
   int numberGuests = Integer.parseInt(stringNumberGuests);
-    System.out.println("Displayed===="+numberGuests);
-    return numberGuests;
+     return numberGuests;
 
 }
 
