@@ -14,7 +14,8 @@ public class DatePicker {
         startDate = reverseDateString(startDate);
         return startDate;
     }
-    public String  pickCheckOutDate() {
+
+    public String pickCheckOutDate() {
         Calendar calendar = new GregorianCalendar();
         calendar.add(Calendar.DATE, +14);
         Date dateCheckOut = calendar.getTime();
@@ -24,7 +25,7 @@ public class DatePicker {
     }
 
     public String reverseDateString(String dateString) {
-        String dateStringTmp = dateString.substring(4,11) +  dateString.substring(24);
+        String dateStringTmp = dateString.substring(4, 11) + dateString.substring(24);
         return dateStringTmp;
     }
 }

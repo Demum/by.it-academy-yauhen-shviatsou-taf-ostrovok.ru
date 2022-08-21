@@ -34,20 +34,17 @@ public class MainPage extends BasePage {
     private WebElement buttonAdultMinus;
     @FindBy(xpath = "(//*[text()='Adults'] /following::div/button[text()='+'])[1]")
     private WebElement buttonAdultPlus;
-
-
-
     @FindBy(xpath = "((//*[text()='Adults'] /following::div/button[text()='−'])[1]/following::div)[1]")
     private WebElement numberOfAdults;
-
-
-
     @FindBy(xpath = " //div[@class='Room-module__kidUnits--3skA4'] ")
     private WebElement buttonAddChild;
     @FindBy(xpath = " //div[@class='Room-module__kidUnits--3skA4']//option[text()='2 years']")
     private WebElement buttonAddChildTwoYearsOld;
     @FindBy(xpath = "  //div[text()='Done']")
     private WebElement buttonDoneWithChild;
+    @FindBy(xpath = "//button[@data-testid='search-button']")
+    private WebElement buttonSearch;
+
 
     int numberOfGuests = 2;
 
@@ -120,6 +117,12 @@ public class MainPage extends BasePage {
         waitForVisibilityOfElement(errorPleaseEnterValidEmail);
         return errorPleaseEnterValidEmail.isDisplayed();
     }
+    public boolean isDisplayedButtonSearch() {
+        waitForVisibilityOfElement(buttonSearch);
+        return buttonSearch.isDisplayed();
+    }
+
+
 
     public MainPage clickButtonCheckInDatePicker() {
         waitForElementToBeClickable(buttonCheckInDatePicker);

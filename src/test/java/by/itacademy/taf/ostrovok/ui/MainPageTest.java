@@ -27,7 +27,7 @@ public class MainPageTest extends BaseTest {
                 .clickButtonSignUp()
                 .typeRandomInValidEmail()
                 .clickButtonSignUpWithCreatedEmail();
-        Assert.assertTrue(mainPage.isDisplayedErrorPleaseEnterValidEmail(),"NOT Displayed Error Please Enter ValidEmail()");
+        Assert.assertTrue(mainPage.isDisplayedErrorPleaseEnterValidEmail(), "NOT Displayed Error Please Enter ValidEmail()");
     }
 
     @Test
@@ -47,17 +47,15 @@ public class MainPageTest extends BaseTest {
 
         mainPage.clickButtonDoneWithChild();
 
-Assert.assertEquals(mainPage.getInputDestinationText(), mainPage.getInputDestinationSting(),"Displyed input destination does not matched Typed Input Destination  ");
-
-
-      DatePicker datePicker = new DatePicker();
-     Assert.assertEquals(mainPage.getDisplayedButtonCheckInDatePickerText(), datePicker.pickCheckInDate(), "Displayed date Check in does not matched picked checkin date");
-
+        Assert.assertEquals(mainPage.getInputDestinationText(), mainPage.getInputDestinationSting(), "Displyed input destination does not matched Typed Input Destination  ");
+        DatePicker datePicker = new DatePicker();
+        Assert.assertEquals(mainPage.getDisplayedButtonCheckInDatePickerText(), datePicker.pickCheckInDate(), "Displayed date Check in does not matched picked checkin date");
         Assert.assertEquals(mainPage.getDisplayedButtonCheckOutDatePickerText(), datePicker.pickCheckOutDate(), "Displayed date Check out does not matched picked checkout date");
-      Assert.assertEquals(mainPage.getDisplayedNumberGuests(), mainPage.getCountedNumberOfGuests(),"getDisplayedNumberGuests() does not equals getCountedNumberOfGuests()");
-        Thread.sleep(2000);
+        Assert.assertEquals(mainPage.getDisplayedNumberGuests(), mainPage.getCountedNumberOfGuests(), "getDisplayedNumberGuests() does not equals getCountedNumberOfGuests()");
+        Assert.assertTrue(mainPage.isDisplayedButtonSearch());
+
     }
 
 
-    }
+}
 
