@@ -51,7 +51,6 @@ public class MainPageTest extends BaseTest {
         Assert.assertEquals(mainPage.getDisplayedButtonCheckOutDatePickerText(), datePicker.pickCheckOutDate(), "Displayed date Check out does not matched picked checkout date");
         Assert.assertEquals(mainPage.getDisplayedNumberGuests(), mainPage.getCountedNumberOfGuests(), "getDisplayedNumberGuests() does not equals getCountedNumberOfGuests()");
         Assert.assertTrue(mainPage.isDisplayedButtonSearch());
-
     }
 
 

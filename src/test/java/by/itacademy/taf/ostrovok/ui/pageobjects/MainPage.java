@@ -7,6 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends BasePage {
+    public final By SUGGEST_DESTINATION = By.xpath("//div[@class='Suggest-module__destination--17nJ9'][@title='Heliport De Paris, France']");
+    public final By ENTERED_INPUT_DESTINATION = By.xpath("//input[@value='Heliport De Paris, France']");
+    int numberOfGuests = 2;
+    DatePicker datePicker = new DatePicker();
+    public final By DATE_PICKER_CHECK_IN = By.xpath("//div[contains(@data-day, '" + datePicker.pickCheckInDate() + "')]");
+    public final By DATE_PICKER_CHECK_OUT = By.xpath("//div[contains(@data-day, '" + datePicker.pickCheckOutDate() + "')]");
     @FindBy(xpath = "//div[text()='Log in']")
     private WebElement buttonLogin;
     @FindBy(xpath = "//span[@data-testid='user-widget-sign-up-tab']")
@@ -25,7 +31,6 @@ public class MainPage extends BasePage {
     private WebElement buttonCheckInDatePicker;
     @FindBy(xpath = "//div[@data-testid='date-end-input']")
     private WebElement buttonCheckOutDatePicker;
-
     @FindBy(xpath = "//div[@class='Suggest-module__destination--17nJ9'][@title='Heliport De Paris, France']")
     private WebElement suggestDestination;
     @FindBy(xpath = " //div[@data-testid='guests-input']")
@@ -44,26 +49,7 @@ public class MainPage extends BasePage {
     private WebElement buttonDoneWithChild;
     @FindBy(xpath = "//button[@data-testid='search-button']")
     private WebElement buttonSearch;
-
-
-    int numberOfGuests = 2;
-
-
-
- private    String inputDestinationSting="Heliport De Paris, France";
-
-    public  final By SUGGEST_DESTINATION = By.xpath("//div[@class='Suggest-module__destination--17nJ9'][@title='Heliport De Paris, France']");
-
-
-    DatePicker datePicker = new DatePicker();
-
-
-    public  final By ENTERED_INPUT_DESTINATION = By.xpath("//input[@value='Heliport De Paris, France']");
-
-    public  final By DATE_PICKER_CHECK_IN = By.xpath("//div[contains(@data-day, '"+datePicker.pickCheckInDate()  +"')]");
-    public  final By DATE_PICKER_CHECK_OUT = By.xpath("//div[contains(@data-day, '"+datePicker.pickCheckOutDate()  +"')]");
-
-
+    private final String inputDestinationSting = "Heliport De Paris, France";
 
     public MainPage openPage() {
         driver.get(BasePage.BASE_URL);
@@ -101,12 +87,11 @@ public class MainPage extends BasePage {
     }
 
     public MainPage typeDestination() {
-       waitForVisibilityOfElement(inputDestination);
-       inputDestination.clear();
-       inputDestination.sendKeys(inputDestinationSting);
+        waitForVisibilityOfElement(inputDestination);
+        inputDestination.clear();
+        inputDestination.sendKeys(inputDestinationSting);
         return this;
     }
-
 
     public String getUserEmail() {
         waitForVisibilityOfElement(userEmailINnMainPage);
@@ -117,12 +102,11 @@ public class MainPage extends BasePage {
         waitForVisibilityOfElement(errorPleaseEnterValidEmail);
         return errorPleaseEnterValidEmail.isDisplayed();
     }
+
     public boolean isDisplayedButtonSearch() {
         waitForVisibilityOfElement(buttonSearch);
         return buttonSearch.isDisplayed();
     }
-
-
 
     public MainPage clickButtonCheckInDatePicker() {
         waitForElementToBeClickable(buttonCheckInDatePicker);
@@ -130,13 +114,14 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public MainPage clickDatePickerCheckIn (){
+    public MainPage clickDatePickerCheckIn() {
         waitForElementToBeClickable(driver.findElement(DATE_PICKER_CHECK_IN));
         driver.findElement(DATE_PICKER_CHECK_IN).click();
         return this;
     }
-    public MainPage clickDatePickerCheckOut (){
-       waitForElementToBeClickable(driver.findElement(DATE_PICKER_CHECK_OUT));
+
+    public MainPage clickDatePickerCheckOut() {
+        waitForElementToBeClickable(driver.findElement(DATE_PICKER_CHECK_OUT));
         driver.findElement(DATE_PICKER_CHECK_OUT).click();
         return this;
     }
@@ -145,68 +130,73 @@ public class MainPage extends BasePage {
 //waitForVisibilityOfElement(driver.findElement(SUGGEST_DESTINATION));
 //        driver.findElement(SUGGEST_DESTINATION).click();
 
-       waitForVisibilityOfElement(suggestDestination);
+        waitForVisibilityOfElement(suggestDestination);
         suggestDestination.click();
 
         return this;
     }
-    public MainPage clickButtonGuestInput (){
+
+    public MainPage clickButtonGuestInput() {
         waitForElementToBeClickable(buttonGuestInput);
         buttonGuestInput.click();
         return this;
     }
-    public MainPage clickButtonAddChild (){
+
+    public MainPage clickButtonAddChild() {
         waitForElementToBeClickable(buttonAddChild);
         buttonAddChild.click();
         return this;
     }
-    public MainPage clickButtonAddChildTwoYearsOld (){
+
+    public MainPage clickButtonAddChildTwoYearsOld() {
         waitForElementToBeClickable(buttonAddChildTwoYearsOld);
         buttonAddChildTwoYearsOld.click();
-        numberOfGuests = numberOfGuests+1;
+        numberOfGuests = numberOfGuests + 1;
         return this;
     }
-    public MainPage clickButtonDoneWithChild (){
+
+    public MainPage clickButtonDoneWithChild() {
         waitForElementToBeClickable(buttonDoneWithChild);
         buttonDoneWithChild.click();
         return this;
     }
 
-    public MainPage clickButtonAdultMinus (){
+    public MainPage clickButtonAdultMinus() {
         waitForElementToBeClickable(buttonAdultMinus);
         buttonAdultMinus.click();
-        numberOfGuests = numberOfGuests-1;
+        numberOfGuests = numberOfGuests - 1;
         return this;
     }
 
-    public MainPage clickButtonAdultPlus (){
+    public MainPage clickButtonAdultPlus() {
         waitForElementToBeClickable(buttonAdultPlus);
         buttonAdultPlus.click();
-        numberOfGuests = numberOfGuests+1;
+        numberOfGuests = numberOfGuests + 1;
         return this;
     }
+
     public String getInputDestinationText() {
         waitForVisibilityOfElement(inputDestination);
         return inputDestination.getAttribute("value");
     }
+
     public String getDisplayedButtonCheckInDatePickerText() {
         waitForVisibilityOfElement(buttonCheckInDatePicker);
         return ifDateSmallerThenTen(buttonCheckInDatePicker);
     }
+
     public String getDisplayedButtonCheckOutDatePickerText() {
         waitForVisibilityOfElement(buttonCheckOutDatePicker);
         return ifDateSmallerThenTen(buttonCheckOutDatePicker);
-
-
     }
 
-    public String ifDateSmallerThenTen(WebElement webElement){
-        String  ifDateSmallerThenTenString= webElement.getText();
-        if(ifDateSmallerThenTenString.length()<11) {
-            ifDateSmallerThenTenString = ifDateSmallerThenTenString.substring(0, 4)+"0" +ifDateSmallerThenTenString.substring(4);
+    public String ifDateSmallerThenTen(WebElement webElement) {
+        String ifDateSmallerThenTenString = webElement.getText();
+        if (ifDateSmallerThenTenString.length() < 11) {
+            ifDateSmallerThenTenString = ifDateSmallerThenTenString.substring(0, 4) + "0" + ifDateSmallerThenTenString.substring(4);
             return ifDateSmallerThenTenString;
         }
-       return ifDateSmallerThenTenString;
+        return ifDateSmallerThenTenString;
     }
 
     public int getCountedNumberOfGuests() {
@@ -217,21 +207,13 @@ public class MainPage extends BasePage {
         return inputDestinationSting;
     }
 
+    public int getDisplayedNumberGuests() {
+        waitForVisibilityOfElement(buttonGuestInput);
+        String stringNumberGuests = buttonGuestInput.getText();
+        stringNumberGuests = stringNumberGuests.substring(0, 2);
+        stringNumberGuests = stringNumberGuests.trim();
+        int numberGuests = Integer.parseInt(stringNumberGuests);
+        return numberGuests;
 
-
-    public int getDisplayedNumberGuests(){
-   waitForVisibilityOfElement(buttonGuestInput);
-  String stringNumberGuests= buttonGuestInput.getText();
-  stringNumberGuests = stringNumberGuests.substring(0, 2);
-   stringNumberGuests = stringNumberGuests.trim();
-  int numberGuests = Integer.parseInt(stringNumberGuests);
-     return numberGuests;
-
-}
-
-
-
-
-
-
+    }
 }
