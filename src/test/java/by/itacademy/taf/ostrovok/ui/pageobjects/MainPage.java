@@ -23,6 +23,8 @@ public class MainPage extends BasePage {
     private WebElement inputDestination;
     @FindBy(xpath = "//div[@data-testid='date-start-input']")
     private WebElement buttonCheckInDatePicker;
+    @FindBy(xpath = "//div[@data-testid='date-end-input']")
+    private WebElement buttonCheckOutDatePicker;
 
     @FindBy(xpath = "//div[@class='Suggest-module__destination--17nJ9'][@title='Heliport De Paris, France']")
     private WebElement suggestDestination;
@@ -186,11 +188,23 @@ public class MainPage extends BasePage {
     }
     public String getDisplayedButtonCheckInDatePickerText() {
         waitForVisibilityOfElement(buttonCheckInDatePicker);
-        return buttonCheckInDatePicker.getText();
+        return ifDateSmallerThenTen(buttonCheckInDatePicker);
+    }
+    public String getDisplayedButtonCheckOutDatePickerText() {
+        waitForVisibilityOfElement(buttonCheckOutDatePicker);
+        return ifDateSmallerThenTen(buttonCheckOutDatePicker);
+
+
     }
 
-
-
+    public String ifDateSmallerThenTen(WebElement webElement){
+        String  ifDateSmallerThenTenString= webElement.getText();
+        if(ifDateSmallerThenTenString.length()<11) {
+            ifDateSmallerThenTenString = ifDateSmallerThenTenString.substring(0, 4)+"0" +ifDateSmallerThenTenString.substring(4);
+            return ifDateSmallerThenTenString;
+        }
+       return ifDateSmallerThenTenString;
+    }
 
     public int getCountedNumberOfGuests() {
         return numberOfGuests;
@@ -199,6 +213,8 @@ public class MainPage extends BasePage {
     public String getInputDestinationSting() {
         return inputDestinationSting;
     }
+
+
 
     public int getDisplayedNumberGuests(){
    waitForVisibilityOfElement(buttonGuestInput);

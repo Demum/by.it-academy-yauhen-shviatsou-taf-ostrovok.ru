@@ -49,10 +49,11 @@ public class MainPageTest extends BaseTest {
 
 Assert.assertEquals(mainPage.getInputDestinationText(), mainPage.getInputDestinationSting(),"Displyed input destination does not matched Typed Input Destination  ");
 
-     System.out.println(mainPage.getDisplayedButtonCheckInDatePickerText());
-      DatePicker datePicker = new DatePicker();
-      System.out.println(datePicker.pickCheckInDate());
 
+      DatePicker datePicker = new DatePicker();
+     Assert.assertEquals(mainPage.getDisplayedButtonCheckInDatePickerText(), datePicker.pickCheckInDate(), "Displayed date Check in does not matched picked checkin date");
+
+        Assert.assertEquals(mainPage.getDisplayedButtonCheckOutDatePickerText(), datePicker.pickCheckOutDate(), "Displayed date Check out does not matched picked checkout date");
       Assert.assertEquals(mainPage.getDisplayedNumberGuests(), mainPage.getCountedNumberOfGuests(),"getDisplayedNumberGuests() does not equals getCountedNumberOfGuests()");
         Thread.sleep(2000);
     }
