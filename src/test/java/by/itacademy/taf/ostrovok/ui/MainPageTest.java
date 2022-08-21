@@ -42,10 +42,8 @@ public class MainPageTest extends BaseTest {
                 .clickButtonGuestInput()
                 .clickButtonAdultMinus()
                 .clickButtonAddChild()
-                .clickButtonAddChildTwoYearsOld();
-
-
-        mainPage.clickButtonDoneWithChild();
+                .clickButtonAddChildTwoYearsOld()
+                .clickButtonDoneWithChild();
 
         Assert.assertEquals(mainPage.getInputDestinationText(), mainPage.getInputDestinationSting(), "Displyed input destination does not matched Typed Input Destination  ");
         DatePicker datePicker = new DatePicker();
