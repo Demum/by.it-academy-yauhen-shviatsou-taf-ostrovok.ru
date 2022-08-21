@@ -49,7 +49,9 @@ public class MainPage extends BasePage {
 
     int numberOfGuests = 2;
 
-    String inputDestinationSting="Heliport De Paris, France";
+
+
+ private    String inputDestinationSting="Heliport De Paris, France";
 
     public  final By SUGGEST_DESTINATION = By.xpath("//div[@class='Suggest-module__destination--17nJ9'][@title='Heliport De Paris, France']");
 
@@ -178,9 +180,24 @@ public class MainPage extends BasePage {
         numberOfGuests = numberOfGuests+1;
         return this;
     }
+    public String getInputDestinationText() {
+        waitForVisibilityOfElement(inputDestination);
+        return inputDestination.getAttribute("value");
+    }
+    public String getDisplayedButtonCheckInDatePickerText() {
+        waitForVisibilityOfElement(buttonCheckInDatePicker);
+        return buttonCheckInDatePicker.getText();
+    }
+
+
+
 
     public int getCountedNumberOfGuests() {
         return numberOfGuests;
+    }
+
+    public String getInputDestinationSting() {
+        return inputDestinationSting;
     }
 
     public int getDisplayedNumberGuests(){

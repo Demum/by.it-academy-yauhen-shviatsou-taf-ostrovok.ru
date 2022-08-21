@@ -24,7 +24,7 @@ public class DatePicker {
     }
 
     public String reverseDateString(String dateString) {
-        String dateStringTmp = dateString.substring(0,11) +  dateString.substring(24);
+        String dateStringTmp = dateString.substring(4,11) +  dateString.substring(24);
         return dateStringTmp;
     }
 }

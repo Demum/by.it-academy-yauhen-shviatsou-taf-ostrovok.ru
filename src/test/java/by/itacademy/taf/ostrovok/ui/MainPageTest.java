@@ -1,6 +1,7 @@
 package by.itacademy.taf.ostrovok.ui;
 
 import by.itacademy.taf.ostrovok.ui.pageobjects.MainPage;
+import by.itacademy.taf.ostrovok.ui.utils.DatePicker;
 import by.itacademy.taf.ostrovok.ui.utils.RandomValue;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -46,9 +47,13 @@ public class MainPageTest extends BaseTest {
 
         mainPage.clickButtonDoneWithChild();
 
+Assert.assertEquals(mainPage.getInputDestinationText(), mainPage.getInputDestinationSting(),"Displyed input destination does not matched Typed Input Destination  ");
 
+     System.out.println(mainPage.getDisplayedButtonCheckInDatePickerText());
+      DatePicker datePicker = new DatePicker();
+      System.out.println(datePicker.pickCheckInDate());
 
-Assert.assertEquals(mainPage.getDisplayedNumberGuests(), mainPage.getCountedNumberOfGuests(),"getDisplayedNumberGuests() does not equals getCountedNumberOfGuests()");
+      Assert.assertEquals(mainPage.getDisplayedNumberGuests(), mainPage.getCountedNumberOfGuests(),"getDisplayedNumberGuests() does not equals getCountedNumberOfGuests()");
         Thread.sleep(2000);
     }
 
