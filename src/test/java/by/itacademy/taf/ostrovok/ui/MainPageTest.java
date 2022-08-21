@@ -37,9 +37,19 @@ public class MainPageTest extends BaseTest {
                 .clickSugestDestination()
                 .clickButtonCheckInDatePicker()
                 .clickDatePickerCheckIn()
-                .clickDatePickerCheckOut();
+                .clickDatePickerCheckOut()
+                .clickButtonGuestInput()
+                .clickButtonAdultMinus()
+                .clickButtonAddChild()
+                .clickButtonAddChildTwoYearsOld();
 
-        Thread.sleep(1000);
+
+        mainPage.clickButtonDoneWithChild();
+
+       mainPage.getDisplayedNumberGuests();
+        System.out.println(mainPage.getCountedNumberOfGuests());
+
+        Thread.sleep(5000);
     }
 
 

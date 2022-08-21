@@ -3,7 +3,6 @@ package by.itacademy.taf.ostrovok.ui.pageobjects;
 import by.itacademy.taf.ostrovok.ui.utils.DatePicker;
 import by.itacademy.taf.ostrovok.ui.utils.RandomValue;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -24,11 +23,36 @@ public class MainPage extends BasePage {
     private WebElement inputDestination;
     @FindBy(xpath = "//div[@data-testid='date-start-input']")
     private WebElement buttonCheckInDatePicker;
+
     @FindBy(xpath = "//div[@class='Suggest-module__destination--17nJ9'][@title='Heliport De Paris, France']")
     private WebElement suggestDestination;
+    @FindBy(xpath = " //div[@data-testid='guests-input']")
+    private WebElement buttonGuestInput;
+    @FindBy(xpath = "(//*[text()='Adults'] /following::div/button[text()='−'])[1]")
+    private WebElement buttonAdultMinus;
+    @FindBy(xpath = "(//*[text()='Adults'] /following::div/button[text()='+'])[1]")
+    private WebElement buttonAdultPlus;
 
+
+
+    @FindBy(xpath = "((//*[text()='Adults'] /following::div/button[text()='−'])[1]/following::div)[1]")
+    private WebElement numberOfAdults;
+
+
+
+    @FindBy(xpath = " //div[@class='Room-module__kidUnits--3skA4'] ")
+    private WebElement buttonAddChild;
+    @FindBy(xpath = " //div[@class='Room-module__kidUnits--3skA4']//option[text()='2 years']")
+    private WebElement buttonAddChildTwoYearsOld;
+    @FindBy(xpath = "  //div[text()='Done']")
+    private WebElement buttonDoneWithChild;
+
+    int numberOfGuests = 2;
 
     String inputDestinationSting="Heliport De Paris, France";
+
+    public  final By SUGGEST_DESTINATION = By.xpath("//div[@class='Suggest-module__destination--17nJ9'][@title='Heliport De Paris, France']");
+
 
     DatePicker datePicker = new DatePicker();
 
@@ -111,10 +135,68 @@ public class MainPage extends BasePage {
     }
 
     public MainPage clickSugestDestination() throws InterruptedException {
+//waitForVisibilityOfElement(driver.findElement(SUGGEST_DESTINATION));
+//        driver.findElement(SUGGEST_DESTINATION).click();
 
        waitForVisibilityOfElement(suggestDestination);
         suggestDestination.click();
 
         return this;
     }
+    public MainPage clickButtonGuestInput (){
+        waitForElementToBeClickable(buttonGuestInput);
+        buttonGuestInput.click();
+        return this;
+    }
+    public MainPage clickButtonAddChild (){
+        waitForElementToBeClickable(buttonAddChild);
+        buttonAddChild.click();
+        return this;
+    }
+    public MainPage clickButtonAddChildTwoYearsOld (){
+        waitForElementToBeClickable(buttonAddChildTwoYearsOld);
+        buttonAddChildTwoYearsOld.click();
+        numberOfGuests = numberOfGuests+1;
+        return this;
+    }
+    public MainPage clickButtonDoneWithChild (){
+        waitForElementToBeClickable(buttonDoneWithChild);
+        buttonDoneWithChild.click();
+        return this;
+    }
+
+    public MainPage clickButtonAdultMinus (){
+        waitForElementToBeClickable(buttonAdultMinus);
+        buttonAdultMinus.click();
+        numberOfGuests = numberOfGuests-1;
+        return this;
+    }
+
+    public MainPage clickButtonAdultPlus (){
+        waitForElementToBeClickable(buttonAdultPlus);
+        buttonAdultPlus.click();
+        numberOfGuests = numberOfGuests+1;
+        return this;
+    }
+
+    public int getCountedNumberOfGuests() {
+        return numberOfGuests;
+    }
+
+    public int getDisplayedNumberGuests(){
+   waitForVisibilityOfElement(buttonGuestInput);
+  String stringNumberGuests= buttonGuestInput.getText();
+  stringNumberGuests = stringNumberGuests.substring(0, 2);
+   stringNumberGuests = stringNumberGuests.trim();
+  int numberGuests = Integer.parseInt(stringNumberGuests);
+    System.out.println("Displayed===="+numberGuests);
+    return numberGuests;
+
+}
+
+
+
+
+
+
 }
