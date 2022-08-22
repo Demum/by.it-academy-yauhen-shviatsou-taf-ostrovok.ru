@@ -1,5 +1,6 @@
 package by.itacademy.taf.ostrovok.ui.pageobjects;
 
+import by.itacademy.taf.ostrovok.ui.utils.DatePicker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -36,17 +37,24 @@ public class ResultSearchByLocationPage extends BasePage{
         return regionIfoText;
     }
 
-    public String getRegionIfoDatesText(){
+    public String getRegionInfoDatesText(){
     String actualRegionIfoDatesText =regionInfoDates.getText();
     return actualRegionIfoDatesText;
     }
-
-    public String getRegionIfoCheckInText(){
+    DatePicker datePicker = new DatePicker();
+    public String getRegionInfoCheckInDateText(){
         String actualCheckIn = regionInfoDates.getText();
         actualCheckIn = actualCheckIn.split("—")[0].trim();
         actualCheckIn = actualCheckIn.substring(3, 7)+actualCheckIn.substring(0, 3)+actualCheckIn.substring(7, 11);
+        return datePicker.addZeroIfDateSmallerThenTen(actualCheckIn);
+    }
+    public String getRegionInfoCheckOutDateText(){
+        String actualCheckOut = regionInfoDates.getText();
+        actualCheckOut = actualCheckOut.split("—")[1].trim();
+        System.out.println("///////////"+actualCheckOut);
+        actualCheckOut = actualCheckOut.substring(3, 7)+actualCheckOut.substring(0, 3)+actualCheckOut.substring(7, 11);
+        return datePicker.addZeroIfDateSmallerThenTen(actualCheckOut);
 
-        return actualCheckIn;
     }
 
 }
