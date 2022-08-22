@@ -1,6 +1,7 @@
 package by.itacademy.taf.ostrovok.ui;
 
 import by.itacademy.taf.ostrovok.ui.pageobjects.MainPage;
+import by.itacademy.taf.ostrovok.ui.pageobjects.ResultSearchByLocationPage;
 import by.itacademy.taf.ostrovok.ui.utils.DatePicker;
 import by.itacademy.taf.ostrovok.ui.utils.RandomValue;
 import org.testng.Assert;
@@ -31,7 +32,7 @@ public class MainPageTest extends BaseTest {
     }
 
     @Test
-    public void testSearchMainPage() throws InterruptedException {
+    public void testSearchMainPage()  {
         MainPage mainPage = new MainPage();
         mainPage.openPage()
                 .typeDestination()
@@ -52,7 +53,32 @@ public class MainPageTest extends BaseTest {
         Assert.assertEquals(mainPage.getDisplayedNumberGuests(), mainPage.getCountedNumberOfGuests(), "getDisplayedNumberGuests() does not equals getCountedNumberOfGuests()");
         Assert.assertTrue(mainPage.isDisplayedButtonSearch());
     }
+    @Test
+    public void testResultSearchByLocationPage() {
 
 
+        MainPage mainPage = new MainPage();
+        mainPage.openPage()
+                .typeDestination()
+                .clickSugestDestination()
+                .clickButtonCheckInDatePicker()
+                .clickDatePickerCheckIn()
+                .clickDatePickerCheckOut()
+                .clickButtonGuestInput()
+                .clickButtonAdultMinus()
+                .clickButtonAddChild()
+                .clickButtonAddChildTwoYearsOld()
+                .clickButtonDoneWithChild()
+                .clickButtonSearch();
+
+
+        ResultSearchByLocationPage resultSearchByLocationPage= new ResultSearchByLocationPage();
+        Assert.assertEquals(resultSearchByLocationPage.getRegionInfoText(), mainPage.getInputDestinationSting(), "actual destination does not match with input destination" );
+        System.out.println(resultSearchByLocationPage.getRegionIfoDatesText());
+        System.out.println(resultSearchByLocationPage.getRegionIfoCheckInText());
+       DatePicker datePicker = new DatePicker();
+        System.out.println(datePicker.pickCheckInDate());
+        //resultSearchByLocationPage.getHeaderText();
+    }
 }
 

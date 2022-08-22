@@ -107,6 +107,10 @@ public class MainPage extends BasePage {
         waitForVisibilityOfElement(buttonSearch);
         return buttonSearch.isDisplayed();
     }
+    public void clickButtonSearch() {
+        waitForVisibilityOfElement(buttonSearch);
+        buttonSearch.click();
+    }
 
     public MainPage clickButtonCheckInDatePicker() {
         waitForElementToBeClickable(buttonCheckInDatePicker);
@@ -126,7 +130,7 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public MainPage clickSugestDestination() throws InterruptedException {
+    public MainPage clickSugestDestination()  {
 //waitForVisibilityOfElement(driver.findElement(SUGGEST_DESTINATION));
 //        driver.findElement(SUGGEST_DESTINATION).click();
 
