@@ -22,15 +22,14 @@ public class ResultSearchByLocationPage extends BasePage{
     private WebElement regionInfoRoomsGuests;
     MainPage mainPage = new MainPage();
 
+    public String getHotelLocationWithoutCountry() {
+        return hotelLocationWithoutCountry;
+    }
+
     String hotelLocationWithoutCountry = mainPage.getInputDestinationSting().split(",")[0].trim();
-
-
     public final By HOTEL_LOCATION = By.xpath("//div[@class='zen-hotelcard-location-value'] /following::span[contains(text(),'"+ hotelLocationWithoutCountry +"')]");
-
     @FindBy(xpath = "  //button[text()='Forward']")
     private WebElement buttonForward;
-
-
     public String getHeaderText() {
         waitForVisibilityOfElement(header);
         String headerText = header.getText();
@@ -40,7 +39,6 @@ public class ResultSearchByLocationPage extends BasePage{
        return headerText;
 
     }
-
     public String  getRegionInfoText(){
         waitForVisibilityOfElement(regionInfo);
         String regionIfoText = regionInfo.getText();
