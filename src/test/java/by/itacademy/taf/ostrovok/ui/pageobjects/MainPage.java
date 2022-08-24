@@ -49,7 +49,7 @@ public class MainPage extends BasePage {
     private WebElement buttonDoneWithChild;
     @FindBy(xpath = "//button[@data-testid='search-button']")
     private WebElement buttonSearch;
-    private final String inputDestinationSting = "Heliport De Paris, France";
+    private final static String inputDestinationSting = "Heliport De Paris, France";
 
     public MainPage openPage() {
         driver.get(BasePage.BASE_URL);

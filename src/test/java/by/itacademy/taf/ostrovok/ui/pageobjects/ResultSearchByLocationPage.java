@@ -1,10 +1,14 @@
 package by.itacademy.taf.ostrovok.ui.pageobjects;
 
 import by.itacademy.taf.ostrovok.ui.utils.DatePicker;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class ResultSearchByLocationPage extends BasePage{
+
     @FindBy(xpath = "//div[@class='zenserpresult-header']")
     private WebElement header;
 
@@ -16,9 +20,15 @@ public class ResultSearchByLocationPage extends BasePage{
 
     @FindBy(xpath = "(//p[@class='zenregioninfo-rooms'])[1]")
     private WebElement regionInfoRoomsGuests;
+    MainPage mainPage = new MainPage();
 
-    @FindBy(xpath = " //div[@class='zen-hotelcard-location-value'] /following::span[contains(text(),'Heliport De Paris')]")
-    private WebElement hotelLocation;
+    String hotelLocationWithoutCountry = mainPage.getInputDestinationSting().split(",")[0].trim();
+
+
+    public final By HOTEL_LOCATION = By.xpath("//div[@class='zen-hotelcard-location-value'] /following::span[contains(text(),'"+ hotelLocationWithoutCountry +"')]");
+
+    @FindBy(xpath = "  //button[text()='Forward']")
+    private WebElement buttonForward;
 
 
     public String getHeaderText() {
@@ -54,11 +64,22 @@ public class ResultSearchByLocationPage extends BasePage{
 
     }
 
-    public boolean isDisplayedHotelLocation() {
-        waitForVisibilityOfElement(hotelLocation);
-        return hotelLocation.isDisplayed();
+    public boolean isDisplayedButtonForward() {
+       return buttonForward.isDisplayed();
     }
 
+
+
+    public boolean isDisplayedHotelLocation(){
+        waitForVisibilityOfElement(HOTEL_LOCATION);
+        List<WebElement> allElements = driver.findElements(HOTEL_LOCATION);
+
+        for (WebElement element: allElements) {
+            System.out.println(element.getText());
+             }
+
+return true;
+    }
 
     }
 

@@ -71,7 +71,6 @@ public class MainPageTest extends BaseTest {
                 .clickButtonDoneWithChild()
                 .clickButtonSearch();
 
-
         ResultSearchByLocationPage resultSearchByLocationPage= new ResultSearchByLocationPage();
         Assert.assertEquals(resultSearchByLocationPage.getRegionInfoText(), mainPage.getInputDestinationSting(), "actual destination does not match with input destination" );
         System.out.println(resultSearchByLocationPage.getRegionInfoDatesText());
@@ -82,9 +81,10 @@ public class MainPageTest extends BaseTest {
         System.out.println(resultSearchByLocationPage.getRegionInfoCheckOutDateText());
         System.out.println(datePicker.pickCheckOutDate());
         Assert.assertEquals(resultSearchByLocationPage.getRegionInfoCheckOutDateText(), datePicker.pickCheckOutDate(), "actual Check our date does not match chosen check out date");
-
-
+//        Assert.assertTrue(resultSearchByLocationPage.isDisplayedHotelLocation());
+resultSearchByLocationPage.isDisplayedHotelLocation();
         //resultSearchByLocationPage.getHeaderText();
+
     }
 }
 

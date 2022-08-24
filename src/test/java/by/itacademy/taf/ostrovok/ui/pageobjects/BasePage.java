@@ -13,7 +13,7 @@ public class BasePage {
 
     protected WebDriver driver;
     public static final String BASE_URL = "https://ostrovok.ru";
-    protected final int WAIT_TIMEOUT_SECONDS = 10;
+    protected final int WAIT_TIMEOUT_SECONDS = 15;
 
     protected BasePage() {
         driver = DriverSingleton.getDriver();
@@ -30,7 +30,7 @@ public class BasePage {
     }
 
     public WebElement waitWebElementIsVisible(WebElement element) {
-        new WebDriverWait(driver, Duration.ofSeconds(3)).
+        new WebDriverWait(driver, Duration.ofSeconds(15)).
                 until(ExpectedConditions.visibilityOf(element));
         return element;
     }
