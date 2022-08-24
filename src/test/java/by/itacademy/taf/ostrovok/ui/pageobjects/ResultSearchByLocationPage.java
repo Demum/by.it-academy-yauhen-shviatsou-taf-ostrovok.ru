@@ -68,17 +68,17 @@ public class ResultSearchByLocationPage extends BasePage{
        return buttonForward.isDisplayed();
     }
 
-
+int count=0;
 
     public boolean isDisplayedHotelLocation(){
         waitForVisibilityOfElement(HOTEL_LOCATION);
         List<WebElement> allElements = driver.findElements(HOTEL_LOCATION);
-
         for (WebElement element: allElements) {
             System.out.println(element.getText());
+            count+=1;
              }
-
-return true;
+        System.out.println(count);
+return buttonForward.isDisplayed();
     }
 
     }
