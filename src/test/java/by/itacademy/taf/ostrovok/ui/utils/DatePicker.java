@@ -39,4 +39,14 @@ public class DatePicker {
         }
         return addZeroIfDateSmallerThenTenString;
     }
+    public String reverseDateFomat(String date) {
+        if (date.length() < 11) {
+            date = date.substring(2, 6) + date.substring(0, 2) + date.substring(6, 10);
+            date = addZeroIfDateSmallerThenTen(date);
+        } else {
+            date = date.substring(3, 7) + date.substring(0, 3) + date.substring(7, 11);
+        }
+        return date;
+    }
+
 }

@@ -81,6 +81,9 @@ public class MainPageTest extends BaseTest {
         Assert.assertEquals(resultSearchByLocationPage.getRegionInfoCheckInDateText(), datePicker.pickCheckInDate(), "actual Check in date does not match chosen check IN date");
         System.out.println(resultSearchByLocationPage.getRegionInfoCheckOutDateText());
         System.out.println(datePicker.pickCheckOutDate());
+        Assert.assertEquals(resultSearchByLocationPage.getRegionInfoCheckOutDateText(), datePicker.pickCheckOutDate(), "actual Check our date does not match chosen check out date");
+
+
         //resultSearchByLocationPage.getHeaderText();
     }
 }

@@ -131,11 +131,11 @@ public class MainPage extends BasePage {
     }
 
     public MainPage clickSugestDestination()  {
-//waitForVisibilityOfElement(driver.findElement(SUGGEST_DESTINATION));
-//        driver.findElement(SUGGEST_DESTINATION).click();
+      waitForVisibilityOfElement(SUGGEST_DESTINATION).click();
 
-        waitForVisibilityOfElement(suggestDestination);
-        suggestDestination.click();
+
+//        waitForVisibilityOfElement(suggestDestination);
+//        suggestDestination.click();
 
         return this;
     }

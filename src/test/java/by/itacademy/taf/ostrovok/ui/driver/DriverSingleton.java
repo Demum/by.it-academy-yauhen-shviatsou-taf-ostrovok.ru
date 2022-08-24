@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
+
 public class DriverSingleton {
         private static WebDriver driver;
     private static ChromeOptions options;
@@ -18,7 +20,7 @@ public class DriverSingleton {
                 WebDriverManager.chromedriver()
                         .setup();
                 driver = new ChromeDriver(options);
-                driver.manage()
+                         driver.manage()
                         .window()
                         .maximize();
             }

@@ -17,7 +17,7 @@ public class ResultSearchByLocationPage extends BasePage{
     @FindBy(xpath = "(//p[@class='zenregioninfo-rooms'])[1]")
     private WebElement regionInfoRoomsGuests;
 
-    @FindBy(xpath = " //div[@class='zen-hotelcard-location-value'] /following::span[1]")
+    @FindBy(xpath = " //div[@class='zen-hotelcard-location-value'] /following::span[contains(text(),'Heliport De Paris')]")
     private WebElement hotelLocation;
 
 
@@ -45,16 +45,23 @@ public class ResultSearchByLocationPage extends BasePage{
     public String getRegionInfoCheckInDateText(){
         String actualCheckIn = regionInfoDates.getText();
         actualCheckIn = actualCheckIn.split("—")[0].trim();
-        actualCheckIn = actualCheckIn.substring(3, 7)+actualCheckIn.substring(0, 3)+actualCheckIn.substring(7, 11);
-        return datePicker.addZeroIfDateSmallerThenTen(actualCheckIn);
+        return datePicker.reverseDateFomat(actualCheckIn);
     }
     public String getRegionInfoCheckOutDateText(){
         String actualCheckOut = regionInfoDates.getText();
         actualCheckOut = actualCheckOut.split("—")[1].trim();
-        System.out.println("///////////"+actualCheckOut);
-        actualCheckOut = actualCheckOut.substring(3, 7)+actualCheckOut.substring(0, 3)+actualCheckOut.substring(7, 11);
-        return datePicker.addZeroIfDateSmallerThenTen(actualCheckOut);
+        return datePicker.reverseDateFomat(actualCheckOut);
 
     }
 
-}
+    public boolean isDisplayedHotelLocation() {
+        waitForVisibilityOfElement(hotelLocation);
+        return hotelLocation.isDisplayed();
+    }
+
+
+    }
+
+
+
+
