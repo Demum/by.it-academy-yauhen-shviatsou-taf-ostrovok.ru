@@ -72,10 +72,9 @@ int count=0;
         waitForVisibilityOfElement(HOTEL_LOCATION);
         List<WebElement> allElements = driver.findElements(HOTEL_LOCATION);
         for (WebElement element: allElements) {
-            System.out.println(element.getText());
             count+=1;
              }
-        System.out.println(count);
+        System.out.println("Count of matched location is: "+count);
 return buttonForward.isDisplayed();
     }
 
