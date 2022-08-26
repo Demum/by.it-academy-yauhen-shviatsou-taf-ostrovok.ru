@@ -15,7 +15,10 @@ public class MainPage extends BasePage {
     public String getInputDestinationSting() {
         return inputDestinationSting;
     }
-    public  By SUGGEST_DESTINATION = By.xpath("//div[@class='Suggest-module__destination--17nJ9'][@title='"+ getInputDestinationSting() +"']");
+    private String getInputDestinationXpathExpression(){
+        return  "//div[@class='Suggest-module__destination--17nJ9'][@title='"+ getInputDestinationSting() +"']";
+    }
+
 
 
     public final By ENTERED_INPUT_DESTINATION = By.xpath("//input[@value='Heliport De Paris, France']");
@@ -141,8 +144,8 @@ public class MainPage extends BasePage {
     }
 
     public MainPage clickSugestDestination()  {
-
-      waitForVisibilityOfElement(SUGGEST_DESTINATION).click();
+     By SUGGEST_DESTINATION = By.xpath(getInputDestinationXpathExpression());
+     waitForVisibilityOfElement(SUGGEST_DESTINATION).click();
 
 
 //        waitForVisibilityOfElement(suggestDestination);

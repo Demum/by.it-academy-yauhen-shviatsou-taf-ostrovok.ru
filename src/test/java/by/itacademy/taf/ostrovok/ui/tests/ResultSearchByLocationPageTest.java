@@ -10,8 +10,6 @@ public class ResultSearchByLocationPageTest extends BaseTest{
 
     @Test
     public void testResultSearchByLocationPage() {
-
-
         MainPage mainPage = new MainPage();
         mainPage.openPage()
                 .typeDestination(mainPage.getInputDestinationSting())
