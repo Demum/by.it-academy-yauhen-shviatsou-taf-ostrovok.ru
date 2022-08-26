@@ -20,6 +20,8 @@ public class ResultSearchByLocationPage extends BasePage{
 
     @FindBy(xpath = "(//p[@class='zenregioninfo-rooms'])[1]")
     private WebElement regionInfoRoomsGuests;
+    @FindBy(xpath = "  //button[text()='Forward']")
+    private WebElement buttonForward;
     MainPage mainPage = new MainPage();
 
     public String getHotelLocationWithoutCountry() {
@@ -28,8 +30,7 @@ public class ResultSearchByLocationPage extends BasePage{
 
     String hotelLocationWithoutCountry = mainPage.getInputDestinationSting().split(",")[0].trim();
     public final By HOTEL_LOCATION = By.xpath("//div[@class='zen-hotelcard-location-value'] /following::span[contains(text(),'"+ hotelLocationWithoutCountry +"')]");
-    @FindBy(xpath = "  //button[text()='Forward']")
-    private WebElement buttonForward;
+
     public String getHeaderText() {
         waitForVisibilityOfElement(header);
         String headerText = header.getText();

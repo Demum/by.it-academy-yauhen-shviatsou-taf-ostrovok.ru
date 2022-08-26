@@ -6,7 +6,7 @@ import by.itacademy.taf.ostrovok.ui.utils.DatePicker;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ResultSearchByLocationTest extends BaseTest{
+public class ResultSearchByLocationPageTest extends BaseTest{
 
     @Test
     public void testResultSearchByLocationPage() {
@@ -14,7 +14,7 @@ public class ResultSearchByLocationTest extends BaseTest{
 
         MainPage mainPage = new MainPage();
         mainPage.openPage()
-                .typeDestination()
+                .typeDestination(mainPage.getInputDestinationSting())
                 .clickSugestDestination()
                 .clickButtonCheckInDatePicker()
                 .clickDatePickerCheckIn()

@@ -36,7 +36,7 @@ public class MainPageTest extends BaseTest {
     public void testSearchMainPage()  {
         MainPage mainPage = new MainPage();
         mainPage.openPage()
-                .typeDestination()
+                .typeDestination(mainPage.getInputDestinationSting())
                 .clickSugestDestination()
                 .clickButtonCheckInDatePicker()
                 .clickDatePickerCheckIn()

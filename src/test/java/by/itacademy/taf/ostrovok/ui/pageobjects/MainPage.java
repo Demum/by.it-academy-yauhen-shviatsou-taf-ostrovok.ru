@@ -7,7 +7,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends BasePage {
-    public final By SUGGEST_DESTINATION = By.xpath("//div[@class='Suggest-module__destination--17nJ9'][@title='Heliport De Paris, France']");
+
+    String inputDestinationSting = "Heliport De Paris, France";
+    public void setInputDestinationSting(String inputDestinationSting) {
+        this.inputDestinationSting = inputDestinationSting;
+    }
+    public String getInputDestinationSting() {
+        return inputDestinationSting;
+    }
+    public  By SUGGEST_DESTINATION = By.xpath("//div[@class='Suggest-module__destination--17nJ9'][@title='"+ getInputDestinationSting() +"']");
+
+
     public final By ENTERED_INPUT_DESTINATION = By.xpath("//input[@value='Heliport De Paris, France']");
     int numberOfGuests = 2;
     DatePicker datePicker = new DatePicker();
@@ -49,7 +59,7 @@ public class MainPage extends BasePage {
     private WebElement buttonDoneWithChild;
     @FindBy(xpath = "//button[@data-testid='search-button']")
     private WebElement buttonSearch;
-    private final static String inputDestinationSting = "Heliport De Paris, France";
+
 
     public MainPage openPage() {
         driver.get(BasePage.BASE_URL);
@@ -86,10 +96,10 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public MainPage typeDestination() {
+    public MainPage typeDestination(String typeInput) {
         waitForVisibilityOfElement(inputDestination);
         inputDestination.clear();
-        inputDestination.sendKeys(inputDestinationSting);
+        inputDestination.sendKeys(typeInput);
         return this;
     }
 
@@ -131,6 +141,7 @@ public class MainPage extends BasePage {
     }
 
     public MainPage clickSugestDestination()  {
+
       waitForVisibilityOfElement(SUGGEST_DESTINATION).click();
 
 
@@ -139,6 +150,9 @@ public class MainPage extends BasePage {
 
         return this;
     }
+
+
+
 
     public MainPage clickButtonGuestInput() {
         waitForElementToBeClickable(buttonGuestInput);
@@ -201,9 +215,7 @@ public class MainPage extends BasePage {
         return numberOfGuests;
     }
 
-    public String getInputDestinationSting() {
-        return inputDestinationSting;
-    }
+
 
     public int getDisplayedNumberGuests() {
         waitForVisibilityOfElement(buttonGuestInput);

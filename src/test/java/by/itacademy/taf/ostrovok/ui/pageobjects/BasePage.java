@@ -29,11 +29,11 @@ public class BasePage {
                 .visibilityOf(webElement));
     }
 
-    public WebElement waitWebElementIsVisible(WebElement element) {
-        new WebDriverWait(driver, Duration.ofSeconds(15)).
-                until(ExpectedConditions.visibilityOf(element));
-        return element;
-    }
+//    public WebElement waitWebElementIsVisible(WebElement element) {
+//        new WebDriverWait(driver, Duration.ofSeconds(15)).
+//                until(ExpectedConditions.visibilityOf(element));
+//        return element;
+//    }
 
     protected WebElement waitForVisibilityOfElement(By webElementLocator) {
          return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
