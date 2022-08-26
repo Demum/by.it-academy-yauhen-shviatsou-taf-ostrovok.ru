@@ -71,12 +71,14 @@ int count=0;
 
     public boolean isDisplayedHotelLocation(){
         waitForVisibilityOfElement(HOTEL_LOCATION);
+        boolean hotelLocationMatched=true;
         List<WebElement> allElements = driver.findElements(HOTEL_LOCATION);
         for (WebElement element: allElements) {
             count+=1;
+            hotelLocationMatched = hotelLocationMatched && element.isDisplayed();
              }
         System.out.println("Count of matched location is: "+count);
-return buttonForward.isDisplayed();
+        return hotelLocationMatched;
     }
 
     }
