@@ -1,8 +1,7 @@
 package by.itacademy.taf.ostrovok.ui.tests;
 
 import by.itacademy.taf.ostrovok.ui.pageobjects.MainPage;
-import by.itacademy.taf.ostrovok.ui.pageobjects.ResultSearchByLocationPage;
-import by.itacademy.taf.ostrovok.ui.tests.BaseTest;
+import by.itacademy.taf.ostrovok.ui.steps.MainPageSteps;
 import by.itacademy.taf.ostrovok.ui.utils.DatePicker;
 import by.itacademy.taf.ostrovok.ui.utils.RandomValue;
 import org.testng.Assert;
@@ -12,23 +11,17 @@ import org.testng.annotations.Test;
 public class MainPageTest extends BaseTest {
     @Test
     public void testLogInWithValidValueMainPage() {
+        MainPageSteps mainPageSteps = new MainPageSteps();
+        mainPageSteps.createValidAccount();
         MainPage mainPage = new MainPage();
-        mainPage.openPage()
-                .clickButtonLogin()
-                .clickButtonSignUp()
-                .typeRandomValidEmail()
-                .clickButtonSignUpWithCreatedEmail();
         Assert.assertEquals(mainPage.getUserEmail(), RandomValue.randomValidEmail, "Entered email does not equals with account email");
     }
 
     @Test
     public void testLogInWithInValidValueMainPage() {
+        MainPageSteps mainPageSteps = new MainPageSteps();
+        mainPageSteps.createInValidAccount();
         MainPage mainPage = new MainPage();
-        mainPage.openPage()
-                .clickButtonLogin()
-                .clickButtonSignUp()
-                .typeRandomInValidEmail()
-                .clickButtonSignUpWithCreatedEmail();
         Assert.assertTrue(mainPage.isDisplayedErrorPleaseEnterValidEmail(), "NOT Displayed Error Please Enter ValidEmail()");
     }
 
