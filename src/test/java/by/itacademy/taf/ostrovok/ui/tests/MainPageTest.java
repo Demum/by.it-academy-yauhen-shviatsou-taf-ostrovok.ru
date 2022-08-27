@@ -26,19 +26,10 @@ public class MainPageTest extends BaseTest {
     }
 
     @Test
-    public void testSearchMainPage()  {
+    public void testSearchByLocationMainPage()  {
+        MainPageSteps mainPageSteps = new MainPageSteps();
+        mainPageSteps.createSearchByLocation();
         MainPage mainPage = new MainPage();
-        mainPage.openPage()
-                .typeDestination(mainPage.getInputDestinationSting())
-                .clickSugestDestination()
-                .clickButtonCheckInDatePicker()
-                .clickDatePickerCheckIn()
-                .clickDatePickerCheckOut()
-                .clickButtonGuestInput()
-                .clickButtonAdultMinus()
-                .clickButtonAddChild()
-                .clickButtonAddChildTwoYearsOld()
-                .clickButtonDoneWithChild();
 
         Assert.assertEquals(mainPage.getInputDestinationText(), mainPage.getInputDestinationSting(), "Displyed input destination does not matched Typed Input Destination  ");
         DatePicker datePicker = new DatePicker();

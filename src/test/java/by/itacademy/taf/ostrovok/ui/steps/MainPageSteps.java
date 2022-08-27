@@ -19,5 +19,18 @@ public void createValidAccount(){
                 .typeRandomInValidEmail()
                 .clickButtonSignUpWithCreatedEmail();
     }
-
+    public void createSearchByLocation(){
+        MainPage mainPage = new MainPage();
+        mainPage.openPage()
+                .typeDestination(mainPage.getInputDestinationSting())
+                .clickSugestDestination()
+                .clickButtonCheckInDatePicker()
+                .clickDatePickerCheckIn()
+                .clickDatePickerCheckOut()
+                .clickButtonGuestInput()
+                .clickButtonAdultMinus()
+                .clickButtonAddChild()
+                .clickButtonAddChildTwoYearsOld()
+                .clickButtonDoneWithChild();
+    }
 }
