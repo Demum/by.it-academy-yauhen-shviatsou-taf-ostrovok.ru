@@ -13,8 +13,6 @@ public class ResultSearchByHotelPage extends BasePage {
         return inputHotelName;
     }
 
-
-
     public String getNameOfTheOpenedHotel(){
        return waitForVisibilityOfElement(titleOfTheHotel).getText();
 

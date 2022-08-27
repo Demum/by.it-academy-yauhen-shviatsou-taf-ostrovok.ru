@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 
 public class ResultSearchByHotelPageTest extends BaseTest {
 
-
     @Test
     public void testResultSearchByHotelPage(){
         MainPage mainPage = new MainPage();
@@ -26,7 +25,6 @@ public class ResultSearchByHotelPageTest extends BaseTest {
                 .clickButtonAddChildTwoYearsOld()
                 .clickButtonDoneWithChild()
                 .clickButtonSearch();
-
         Assert.assertEquals(resultSearchByHotelPage.getNameOfTheOpenedHotel(), mainPage.getInputDestinationSting(), "Opened Hotel does not match with inputNameHotel");
     }
 }

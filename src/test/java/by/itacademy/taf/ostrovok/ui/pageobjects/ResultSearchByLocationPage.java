@@ -60,7 +60,6 @@ public class ResultSearchByLocationPage extends BasePage{
         String actualCheckOut = regionInfoDates.getText();
         actualCheckOut = actualCheckOut.split("—")[1].trim();
         return datePicker.reverseDateFomat(actualCheckOut);
-
     }
 
     public boolean isDisplayedButtonForward() {
@@ -80,7 +79,6 @@ int count=0;
         System.out.println("Count of matched location is: "+count);
         return hotelLocationMatched;
     }
-
     }
 
 

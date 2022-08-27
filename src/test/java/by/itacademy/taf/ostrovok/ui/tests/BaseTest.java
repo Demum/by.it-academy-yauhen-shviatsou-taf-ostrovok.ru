@@ -5,8 +5,6 @@ import org.testng.annotations.AfterMethod;
 
 public class BaseTest {
 
-
-
     @AfterMethod
     public void finishTest() {
         DriverSingleton.closeDriver();

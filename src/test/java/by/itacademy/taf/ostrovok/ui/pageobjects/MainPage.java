@@ -19,9 +19,6 @@ public class MainPage extends BasePage {
         return  "//div[@class='Suggest-module__destination--17nJ9'][@title='"+ getInputDestinationSting() +"']";
     }
 
-
-
-    public final By ENTERED_INPUT_DESTINATION = By.xpath("//input[@value='Heliport De Paris, France']");
     int numberOfGuests = 2;
     DatePicker datePicker = new DatePicker();
     public final By DATE_PICKER_CHECK_IN = By.xpath("//div[contains(@data-day, '" + datePicker.pickCheckInDate() + "')]");
@@ -62,7 +59,6 @@ public class MainPage extends BasePage {
     private WebElement buttonDoneWithChild;
     @FindBy(xpath = "//button[@data-testid='search-button']")
     private WebElement buttonSearch;
-
 
     public MainPage openPage() {
         driver.get(BasePage.BASE_URL);
@@ -146,16 +142,8 @@ public class MainPage extends BasePage {
     public MainPage clickSugestDestination()  {
      By SUGGEST_DESTINATION = By.xpath(getInputDestinationXpathExpression());
      waitForVisibilityOfElement(SUGGEST_DESTINATION).click();
-
-
-//        waitForVisibilityOfElement(suggestDestination);
-//        suggestDestination.click();
-
         return this;
     }
-
-
-
 
     public MainPage clickButtonGuestInput() {
         waitForElementToBeClickable(buttonGuestInput);
@@ -212,13 +200,9 @@ public class MainPage extends BasePage {
         return datePicker.addZeroIfDateSmallerThenTen(buttonCheckOutDatePicker.getText());
     }
 
-
-
     public int getCountedNumberOfGuests() {
         return numberOfGuests;
     }
-
-
 
     public int getDisplayedNumberGuests() {
         waitForVisibilityOfElement(buttonGuestInput);
@@ -227,6 +211,5 @@ public class MainPage extends BasePage {
         stringNumberGuests = stringNumberGuests.trim();
         int numberGuests = Integer.parseInt(stringNumberGuests);
         return numberGuests;
-
     }
 }
