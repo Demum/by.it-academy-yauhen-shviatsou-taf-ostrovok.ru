@@ -13,7 +13,7 @@ public class BasePage {
 
     protected WebDriver driver;
     public static final String BASE_URL = "https://ostrovok.ru";
-    protected final int WAIT_TIMEOUT_SECONDS = 20;
+    protected final int WAIT_TIMEOUT_SECONDS = 30;
 
     protected BasePage() {
         driver = DriverSingleton.getDriver();
