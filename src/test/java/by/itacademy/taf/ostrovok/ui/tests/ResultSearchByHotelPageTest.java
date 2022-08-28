@@ -9,8 +9,8 @@ public class ResultSearchByHotelPageTest extends BaseTest {
 
     @Test
     public void testResultSearchByHotelPage(){
-       ResultSearchByHotelPageSteps resultSearchByHotelPageSteps = new ResultSearchByHotelPageSteps();
-       resultSearchByHotelPageSteps.searchByHotel();
+        ResultSearchByHotelPageSteps resultSearchByHotelPageSteps = new ResultSearchByHotelPageSteps();
+        resultSearchByHotelPageSteps.searchByHotel();
         ResultSearchByHotelPage resultSearchByHotelPage = new ResultSearchByHotelPage();
         Assert.assertEquals(resultSearchByHotelPage.getNameOfTheOpenedHotel(), resultSearchByHotelPage.getInputHotelName(), "Opened Hotel does not match with inputNameHotel");
     }

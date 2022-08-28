@@ -10,7 +10,7 @@ public class DatePicker {
 
     public String pickCheckInDate() {
         Calendar calendar = new GregorianCalendar();
-        calendar.add(Calendar.DATE, +2);
+        calendar.add(Calendar.DATE, +4);
         Date dateCheckIn = calendar.getTime();
         String startDate = dateCheckIn.toString();
         startDate = reverseDateString(startDate);

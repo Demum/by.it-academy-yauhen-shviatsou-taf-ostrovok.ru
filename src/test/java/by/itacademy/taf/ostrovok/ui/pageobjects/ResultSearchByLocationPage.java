@@ -35,9 +35,9 @@ public class ResultSearchByLocationPage extends BasePage{
         waitForVisibilityOfElement(header);
         String headerText = header.getText();
         System.out.println(headerText);
-       headerText  = headerText.split(":")[0];
+        headerText  = headerText.split(":")[0];
         System.out.println(headerText);
-       return headerText;
+        return headerText;
 
     }
     public String  getRegionInfoText(){
@@ -47,8 +47,8 @@ public class ResultSearchByLocationPage extends BasePage{
     }
 
     public String getRegionInfoDatesText(){
-    String actualRegionIfoDatesText =regionInfoDates.getText();
-    return actualRegionIfoDatesText;
+        String actualRegionIfoDatesText =regionInfoDates.getText();
+        return actualRegionIfoDatesText;
     }
     DatePicker datePicker = new DatePicker();
     public String getRegionInfoCheckInDateText(){
@@ -63,10 +63,10 @@ public class ResultSearchByLocationPage extends BasePage{
     }
 
     public boolean isDisplayedButtonForward() {
-       return buttonForward.isDisplayed();
+        return buttonForward.isDisplayed();
     }
 
-int count=0;
+    int count=0;
 
     public boolean isDisplayedHotelLocation(){
         waitForVisibilityOfElement(HOTEL_LOCATION);
@@ -75,11 +75,12 @@ int count=0;
         for (WebElement element: allElements) {
             count+=1;
             hotelLocationMatched = hotelLocationMatched && element.isDisplayed();
-             }
+        }
         System.out.println("Count of matched location is: "+count);
         return hotelLocationMatched;
     }
-    }
+}
+
 
 
 

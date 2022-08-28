@@ -21,8 +21,10 @@ public class MainPage extends BasePage {
 
     int numberOfGuests = 2;
     DatePicker datePicker = new DatePicker();
+
     public final By DATE_PICKER_CHECK_IN = By.xpath("//div[contains(@data-day, '" + datePicker.pickCheckInDate() + "')]");
     public final By DATE_PICKER_CHECK_OUT = By.xpath("//div[contains(@data-day, '" + datePicker.pickCheckOutDate() + "')]");
+
     @FindBy(xpath = "//div[text()='Log in']")
     private WebElement buttonLogin;
     @FindBy(xpath = "//span[@data-testid='user-widget-sign-up-tab']")
@@ -121,13 +123,14 @@ public class MainPage extends BasePage {
         buttonSearch.click();
     }
 
+
     public MainPage clickButtonCheckInDatePicker() {
         waitForElementToBeClickable(buttonCheckInDatePicker);
         buttonCheckInDatePicker.click();
         return this;
     }
 
-    public MainPage clickDatePickerCheckIn() {
+    public MainPage clickDatePickerCheckIn()  {
         waitForElementToBeClickable(driver.findElement(DATE_PICKER_CHECK_IN));
         driver.findElement(DATE_PICKER_CHECK_IN).click();
         return this;
@@ -140,8 +143,8 @@ public class MainPage extends BasePage {
     }
 
     public MainPage clickSugestDestination()  {
-     By SUGGEST_DESTINATION = By.xpath(getInputDestinationXpathExpression());
-     waitForVisibilityOfElement(SUGGEST_DESTINATION).click();
+        By SUGGEST_DESTINATION = By.xpath(getInputDestinationXpathExpression());
+        waitForVisibilityOfElement(SUGGEST_DESTINATION).click();
         return this;
     }
 
