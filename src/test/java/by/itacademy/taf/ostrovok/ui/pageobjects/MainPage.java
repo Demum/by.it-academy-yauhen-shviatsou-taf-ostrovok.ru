@@ -22,9 +22,6 @@ public class MainPage extends BasePage {
     int numberOfGuests = 2;
     DatePicker datePicker = new DatePicker();
 
-
-
-
     @FindBy(xpath = "//div[text()='Log in']")
     private WebElement buttonLogin;
     @FindBy(xpath = "//span[@data-testid='user-widget-sign-up-tab']")
