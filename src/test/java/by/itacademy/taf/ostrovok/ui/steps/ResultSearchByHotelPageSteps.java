@@ -9,7 +9,7 @@ public class ResultSearchByHotelPageSteps {
         ResultSearchByHotelPage resultSearchByHotelPage = new ResultSearchByHotelPage();
         mainPage.setInputDestinationSting(resultSearchByHotelPage.getInputHotelName());
 
-        mainPage.openPage()
+        mainPage
                 .typeDestination(mainPage.getInputDestinationSting())
                 .clickSugestDestination()
                 .clickButtonCheckInDatePicker()
