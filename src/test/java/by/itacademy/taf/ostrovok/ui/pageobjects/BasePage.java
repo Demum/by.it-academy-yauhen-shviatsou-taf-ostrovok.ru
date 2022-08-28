@@ -21,11 +21,11 @@ public class BasePage {
     }
 
     protected WebElement waitForElementToBeClickable(WebElement webElement) {
-        return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(webElement));
+        return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS)).until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     protected WebElement waitForVisibilityOfElement(WebElement webElement) {
-        return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions
+        return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS)).until(ExpectedConditions
                 .visibilityOf(webElement));
     }
 

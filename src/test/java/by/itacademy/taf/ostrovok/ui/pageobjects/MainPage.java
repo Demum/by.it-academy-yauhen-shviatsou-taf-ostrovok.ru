@@ -22,8 +22,8 @@ public class MainPage extends BasePage {
     int numberOfGuests = 2;
     DatePicker datePicker = new DatePicker();
 
-    public final By DATE_PICKER_CHECK_IN = By.xpath("//div[contains(@data-day, '" + datePicker.pickCheckInDate() + "')]");
-    public final By DATE_PICKER_CHECK_OUT = By.xpath("//div[contains(@data-day, '" + datePicker.pickCheckOutDate() + "')]");
+
+
 
     @FindBy(xpath = "//div[text()='Log in']")
     private WebElement buttonLogin;
@@ -131,14 +131,12 @@ public class MainPage extends BasePage {
     }
 
     public MainPage clickDatePickerCheckIn()  {
-        waitForElementToBeClickable(driver.findElement(DATE_PICKER_CHECK_IN));
-        driver.findElement(DATE_PICKER_CHECK_IN).click();
+        waitForElementToBeClickable(driver.findElement(By.xpath("//div[contains(@data-day, '" + datePicker.pickCheckInDate() + "')]"))).click();
         return this;
     }
 
     public MainPage clickDatePickerCheckOut() {
-        waitForElementToBeClickable(driver.findElement(DATE_PICKER_CHECK_OUT));
-        driver.findElement(DATE_PICKER_CHECK_OUT).click();
+        waitForElementToBeClickable(driver.findElement(By.xpath("//div[contains(@data-day, '" + datePicker.pickCheckOutDate() + "')]"))).click();
         return this;
     }
 
