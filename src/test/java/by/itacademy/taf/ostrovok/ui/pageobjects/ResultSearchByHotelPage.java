@@ -14,7 +14,7 @@ public class ResultSearchByHotelPage extends BasePage {
     }
 
     public String getNameOfTheOpenedHotel(){
-       return waitForVisibilityOfElement(titleOfTheHotel).getText();
+        return waitForVisibilityOfElement(titleOfTheHotel).getText();
 
     }
 }
