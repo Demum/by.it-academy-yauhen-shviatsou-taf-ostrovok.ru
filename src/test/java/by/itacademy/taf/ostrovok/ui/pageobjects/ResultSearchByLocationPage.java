@@ -17,6 +17,7 @@ public class ResultSearchByLocationPage extends BasePage{
 
     @FindBy(xpath = "(//p[@class='zenregioninfo-dates'])[1]")
     private WebElement regionInfoDates;
+    //
 
     @FindBy(xpath = "(//p[@class='zenregioninfo-rooms'])[1]")
     private WebElement regionInfoRoomsGuests;
