@@ -8,7 +8,6 @@ public class ResultSearchByHotelPageSteps {
         MainPage mainPage = new MainPage();
         ResultSearchByHotelPage resultSearchByHotelPage = new ResultSearchByHotelPage();
         mainPage.setInputDestinationSting(resultSearchByHotelPage.getInputHotelName());
-
         mainPage
                 .typeDestination(mainPage.getInputDestinationSting())
                 .clickSugestDestination()
