@@ -31,7 +31,6 @@ public class BasePage {
         return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS)).until(ExpectedConditions
                 .visibilityOf(webElement));
     }
-
     protected WebElement waitForVisibilityOfElement(By webElementLocator) {
         return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.visibilityOfElementLocated(webElementLocator));
