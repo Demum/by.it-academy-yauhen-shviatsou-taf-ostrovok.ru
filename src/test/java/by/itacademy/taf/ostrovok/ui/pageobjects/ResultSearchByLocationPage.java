@@ -67,17 +67,17 @@ public class ResultSearchByLocationPage extends BasePage{
         return buttonForward.isDisplayed();
     }
 
-    int count=0;
+  private int countIsDisplayedHotelLocationMatched =0;
 
     public boolean isDisplayedHotelLocation(){
         waitForVisibilityOfElement(HOTEL_LOCATION);
         boolean hotelLocationMatched=true;
         List<WebElement> allElements = driver.findElements(HOTEL_LOCATION);
         for (WebElement element: allElements) {
-            count+=1;
+            countIsDisplayedHotelLocationMatched +=1;
             hotelLocationMatched = hotelLocationMatched && element.isDisplayed();
         }
-        System.out.println("Count of matched location is: "+count);
+        logger.info("Count of matched location is: "+ countIsDisplayedHotelLocationMatched);
         return hotelLocationMatched;
     }
 }
