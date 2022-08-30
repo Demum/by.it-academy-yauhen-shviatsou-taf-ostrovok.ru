@@ -62,7 +62,6 @@ public class TestListener implements ITestListener {
             log.error("Failed to save screenshot: " + e.getLocalizedMessage());
         }
     }
-
     private String getCurrentTimeAsString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd_HH-mm-ss");
         return ZonedDateTime.now().format(formatter);
