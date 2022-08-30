@@ -1,7 +1,5 @@
 package by.itacademy.taf.ostrovok.ui.utils;
 
-import org.openqa.selenium.WebElement;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -13,7 +11,7 @@ public class DatePicker {
         calendar.add(Calendar.DATE, +4);
         Date dateCheckIn = calendar.getTime();
         String startDate = dateCheckIn.toString();
-        startDate = reverseDateString(startDate);
+        startDate = reverseDateStringToMMDDYYYY(startDate);
         return startDate;
     }
 
@@ -22,11 +20,11 @@ public class DatePicker {
         calendar.add(Calendar.DATE, +14);
         Date dateCheckOut = calendar.getTime();
         String outDate = dateCheckOut.toString();
-        outDate = reverseDateString(outDate);
+        outDate = reverseDateStringToMMDDYYYY(outDate);
         return outDate;
     }
 
-    public String reverseDateString(String dateString) {
+    public String reverseDateStringToMMDDYYYY(String dateString) {
         String dateStringTmp = dateString.substring(4, 11) + dateString.substring(24);
         return dateStringTmp;
     }
@@ -39,7 +37,7 @@ public class DatePicker {
         }
         return addZeroIfDateSmallerThenTenString;
     }
-    public String reverseDateFomat(String date) {
+    public String reverseDateFomatFromDDMMYYYYtoMMDDYYYY(String date) {
         if (date.length() < 11) {
             date = date.substring(2, 6) + date.substring(0, 2) + date.substring(6, 10);
             date = addZeroIfDateSmallerThenTen(date);

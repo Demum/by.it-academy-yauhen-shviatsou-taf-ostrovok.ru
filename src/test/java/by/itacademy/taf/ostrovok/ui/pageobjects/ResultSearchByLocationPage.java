@@ -7,77 +7,74 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class ResultSearchByLocationPage extends BasePage{
+public class ResultSearchByLocationPage extends BasePage {
 
+    MainPage mainPage = new MainPage();
+    String hotelLocationWithoutCountry = mainPage.getInputDestinationSting().split(",")[0].trim();
+
+    public final By HOTEL_LOCATION = By.xpath("//div[@class='zen-hotelcard-location-value'] /following::span[contains(text(),'" + hotelLocationWithoutCountry + "')]");
+    DatePicker datePicker = new DatePicker();
     @FindBy(xpath = "//div[@class='zenserpresult-header']")
     private WebElement header;
-
     @FindBy(xpath = "(//div//p[@class='link zenregioninfo-region'])[1]")
     private WebElement regionInfo;
-
     @FindBy(xpath = "(//p[@class='zenregioninfo-dates'])[1]")
     private WebElement regionInfoDates;
-    //
-
     @FindBy(xpath = "(//p[@class='zenregioninfo-rooms'])[1]")
     private WebElement regionInfoRoomsGuests;
     @FindBy(xpath = "  //button[text()='Forward']")
     private WebElement buttonForward;
-    MainPage mainPage = new MainPage();
+    private int countIsDisplayedHotelLocationMatched = 0;
 
     public String getHotelLocationWithoutCountry() {
         return hotelLocationWithoutCountry;
     }
 
-    String hotelLocationWithoutCountry = mainPage.getInputDestinationSting().split(",")[0].trim();
-    public final By HOTEL_LOCATION = By.xpath("//div[@class='zen-hotelcard-location-value'] /following::span[contains(text(),'"+ hotelLocationWithoutCountry +"')]");
-
-    public String getHeaderText() {
+    public String getHeaderTextLocation() {
         waitForVisibilityOfElement(header);
         String headerText = header.getText();
-        System.out.println(headerText);
-        headerText  = headerText.split(":")[0];
-        System.out.println(headerText);
+        headerText = headerText.split(":")[0];
         return headerText;
 
     }
-    public String  getRegionInfoText(){
+
+    public String getRegionInfoText() {
         waitForVisibilityOfElement(regionInfo);
         String regionIfoText = regionInfo.getText();
         return regionIfoText;
     }
 
-    public String getRegionInfoDatesText(){
-        String actualRegionIfoDatesText =regionInfoDates.getText();
-        return actualRegionIfoDatesText;
+    public int getRegionInfoGetGuests() {
+        waitForVisibilityOfElement(regionInfoRoomsGuests);
+        String stringRegionInfoRoomsGuest = regionInfoRoomsGuests.getText();
+        stringRegionInfoRoomsGuest = stringRegionInfoRoomsGuest.split("for ")[1];
+        stringRegionInfoRoomsGuest = stringRegionInfoRoomsGuest.split(" ")[0];
+        return Integer.parseInt(stringRegionInfoRoomsGuest);
     }
-    DatePicker datePicker = new DatePicker();
-    public String getRegionInfoCheckInDateText(){
+
+    public String getRegionInfoCheckInDateText() {
         String actualCheckIn = regionInfoDates.getText();
         actualCheckIn = actualCheckIn.split("—")[0].trim();
-        return datePicker.reverseDateFomat(actualCheckIn);
+        return datePicker.reverseDateFomatFromDDMMYYYYtoMMDDYYYY(actualCheckIn);
     }
-    public String getRegionInfoCheckOutDateText(){
+
+    public String getRegionInfoCheckOutDateText() {
         String actualCheckOut = regionInfoDates.getText();
         actualCheckOut = actualCheckOut.split("—")[1].trim();
-        return datePicker.reverseDateFomat(actualCheckOut);
+        return datePicker.reverseDateFomatFromDDMMYYYYtoMMDDYYYY(actualCheckOut);
     }
 
-    public boolean isDisplayedButtonForward() {
-        return buttonForward.isDisplayed();
-    }
-
-  private int countIsDisplayedHotelLocationMatched =0;
-
-    public boolean isDisplayedHotelLocation(){
+    public boolean isDisplayedHotelLocation() {
         waitForVisibilityOfElement(HOTEL_LOCATION);
-        boolean hotelLocationMatched=true;
+        boolean hotelLocationMatched = true;
         List<WebElement> allElements = driver.findElements(HOTEL_LOCATION);
-        for (WebElement element: allElements) {
-            countIsDisplayedHotelLocationMatched +=1;
+        for (WebElement element : allElements) {
+            countIsDisplayedHotelLocationMatched += 1;
             hotelLocationMatched = hotelLocationMatched && element.isDisplayed();
         }
-        logger.info("Count of matched location is: "+ countIsDisplayedHotelLocationMatched);
+        if (buttonForward.isDisplayed())
+            logger.info("Count of matched location expected 20, actual : " + countIsDisplayedHotelLocationMatched);
+
         return hotelLocationMatched;
     }
 }

@@ -9,19 +9,8 @@ import org.openqa.selenium.support.FindBy;
 public class MainPage extends BasePage {
 
     String inputDestinationSting = "Heliport De Paris, France";
-    public void setInputDestinationSting(String inputDestinationSting) {
-        this.inputDestinationSting = inputDestinationSting;
-    }
-    public String getInputDestinationSting() {
-        return inputDestinationSting;
-    }
-    private String getInputDestinationXpathExpression(){
-        return  "//div[@class='Suggest-module__destination--17nJ9'][@title='"+ getInputDestinationSting() +"']";
-    }
-
     int numberOfGuests = 2;
     DatePicker datePicker = new DatePicker();
-
     @FindBy(xpath = "//div[text()='Log in']")
     private WebElement buttonLogin;
     @FindBy(xpath = "//span[@data-testid='user-widget-sign-up-tab']")
@@ -58,6 +47,18 @@ public class MainPage extends BasePage {
     private WebElement buttonDoneWithChild;
     @FindBy(xpath = "//button[@data-testid='search-button']")
     private WebElement buttonSearch;
+
+    public String getInputDestinationSting() {
+        return inputDestinationSting;
+    }
+
+    public void setInputDestinationSting(String inputDestinationSting) {
+        this.inputDestinationSting = inputDestinationSting;
+    }
+
+    private String getInputDestinationXpathExpression() {
+        return "//div[@class='Suggest-module__destination--17nJ9'][@title='" + getInputDestinationSting() + "']";
+    }
 
     public MainPage openPage() {
         driver.get(BasePage.BASE_URL);
@@ -115,11 +116,11 @@ public class MainPage extends BasePage {
         waitForVisibilityOfElement(buttonSearch);
         return buttonSearch.isDisplayed();
     }
+
     public void clickButtonSearch() {
         waitForVisibilityOfElement(buttonSearch);
         buttonSearch.click();
     }
-
 
     public MainPage clickButtonCheckInDatePicker() {
         waitForElementToBeClickable(buttonCheckInDatePicker);
@@ -127,7 +128,7 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public MainPage clickDatePickerCheckIn()  {
+    public MainPage clickDatePickerCheckIn() {
         waitForElementToBeClickable(driver.findElement(By.xpath("//div[contains(@data-day, '" + datePicker.pickCheckInDate() + "')]"))).click();
         return this;
     }
@@ -137,7 +138,7 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public MainPage clickSugestDestination()  {
+    public MainPage clickSugestDestination() {
         By SUGGEST_DESTINATION = By.xpath(getInputDestinationXpathExpression());
         waitForVisibilityOfElement(SUGGEST_DESTINATION).click();
         return this;
@@ -189,7 +190,7 @@ public class MainPage extends BasePage {
 
     public String getDisplayedButtonCheckInDatePickerText() {
         waitForVisibilityOfElement(buttonCheckInDatePicker);
-        return   datePicker.addZeroIfDateSmallerThenTen(buttonCheckInDatePicker.getText());
+        return datePicker.addZeroIfDateSmallerThenTen(buttonCheckInDatePicker.getText());
 
     }
 

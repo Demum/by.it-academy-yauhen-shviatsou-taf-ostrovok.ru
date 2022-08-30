@@ -13,7 +13,6 @@ public class HomeApiOstrovokRu {
                     .all()
                     .extract()
                     .statusCode();
-
         }
     public int postResponseCode(String url) {
         return given()
@@ -24,7 +23,6 @@ public class HomeApiOstrovokRu {
                 .all()
                 .extract()
                 .statusCode();
-
     }
     public String getHeaders(String url) {
         String headers = given()
