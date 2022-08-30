@@ -19,8 +19,8 @@ public class ResultSearchByLocationPageTest extends BaseTest{
         DatePicker datePicker = new DatePicker();
         logger.info("checkin date from resultSearchByLocationPage " + resultSearchByLocationPage.getRegionInfoCheckInDateText()+"Picked checkIn Date"+ datePicker.pickCheckInDate());
         Assert.assertEquals(resultSearchByLocationPage.getRegionInfoCheckInDateText(), datePicker.pickCheckInDate(), "actual Check in date does not match chosen check IN date");
-        System.out.println(resultSearchByLocationPage.getRegionInfoCheckOutDateText());
-        System.out.println(datePicker.pickCheckOutDate());
+        logger.info(resultSearchByLocationPage.getRegionInfoCheckOutDateText());
+        logger.info(datePicker.pickCheckOutDate());
         Assert.assertEquals(resultSearchByLocationPage.getRegionInfoCheckOutDateText(), datePicker.pickCheckOutDate(), "actual Check our date does not match chosen check out date");
         Assert.assertTrue(resultSearchByLocationPage.isDisplayedHotelLocation());
         Assert.assertEquals(resultSearchByLocationPage.getHeaderText(), resultSearchByLocationPage.getHotelLocationWithoutCountry(), "HeaderLocation does not match input Location");
