@@ -13,6 +13,7 @@ public class ResultSearchByLocationPage extends BasePage {
     String hotelLocationWithoutCountry = mainPage.getInputDestinationSting().split(",")[0].trim();
 
     public final By HOTEL_LOCATION = By.xpath("//div[@class='zen-hotelcard-location-value'] /following::span[contains(text(),'" + hotelLocationWithoutCountry + "')]");
+
     DatePicker datePicker = new DatePicker();
     @FindBy(xpath = "//div[@class='zenserpresult-header']")
     private WebElement header;
@@ -24,6 +25,9 @@ public class ResultSearchByLocationPage extends BasePage {
     private WebElement regionInfoRoomsGuests;
     @FindBy(xpath = "  //button[text()='Forward']")
     private WebElement buttonForward;
+    @FindBy(xpath = " //div[@class = 'zen-hotelcard-wrapper']")
+    private WebElement hotelcard;
+
     private int countIsDisplayedHotelLocationMatched = 0;
 
     public String getHotelLocationWithoutCountry() {
@@ -64,18 +68,27 @@ public class ResultSearchByLocationPage extends BasePage {
         return datePicker.reverseDateFomatFromDDMMYYYYtoMMDDYYYY(actualCheckOut);
     }
 
-    public boolean isDisplayedHotelLocation() {
+    public int countInHotelCardsCorrectLocation() {
         waitForVisibilityOfElement(HOTEL_LOCATION);
         boolean hotelLocationMatched = true;
         List<WebElement> allElements = driver.findElements(HOTEL_LOCATION);
         for (WebElement element : allElements) {
             countIsDisplayedHotelLocationMatched += 1;
-            hotelLocationMatched = hotelLocationMatched && element.isDisplayed();
-        }
-        if (buttonForward.isDisplayed())
-            logger.info("Count of matched location expected 20, actual : " + countIsDisplayedHotelLocationMatched);
+            }
+        logger.info("countInHotelCardsCorrectLocation is:"+ countIsDisplayedHotelLocationMatched );
+        return countIsDisplayedHotelLocationMatched;
+    }
 
-        return hotelLocationMatched;
+    int countOfHotelCards = 0;
+
+    public int countofHotelCards() {
+        waitForVisibilityOfElement(hotelcard);
+        List<WebElement> allElements = driver.findElements(By.xpath("//div[@class = 'zen-hotelcard-wrapper']"));
+        for (WebElement element : allElements) {
+            countOfHotelCards += 1;
+                  }
+        logger.info("countOfHotelCards is:"+ countOfHotelCards );
+        return countOfHotelCards;
     }
 }
 
