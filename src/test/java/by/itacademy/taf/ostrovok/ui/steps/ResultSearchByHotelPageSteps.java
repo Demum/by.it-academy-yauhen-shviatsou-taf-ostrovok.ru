@@ -15,7 +15,7 @@ public class ResultSearchByHotelPageSteps {
                 .clickDatePickerCheckIn()
                 .clickDatePickerCheckOut()
                 .clickButtonGuestInput()
-                .clickButtonAdultMinus()
+                .clickButtonAdultPlus()
                 .clickButtonAddChild()
                 .clickButtonAddChildTwoYearsOld()
                 .clickButtonDoneWithChild()

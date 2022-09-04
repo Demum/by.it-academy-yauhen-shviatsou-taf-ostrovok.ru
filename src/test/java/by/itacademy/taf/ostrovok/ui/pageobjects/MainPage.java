@@ -11,7 +11,7 @@ public class MainPage extends BasePage {
     String inputDestinationSting = "Heliport De Paris, France";
     int numberOfGuests = 2;
     DatePicker datePicker = new DatePicker();
-    @FindBy(xpath = "//div[text()='Log in']")
+    @FindBy(xpath = "//div[@class='Control-module__value--1KWj3']")
     private WebElement buttonLogin;
     @FindBy(xpath = "//span[@data-testid='user-widget-sign-up-tab']")
     private WebElement buttonSignUp;
@@ -29,13 +29,12 @@ public class MainPage extends BasePage {
     private WebElement buttonCheckInDatePicker;
     @FindBy(xpath = "//div[@data-testid='date-end-input']")
     private WebElement buttonCheckOutDatePicker;
-    @FindBy(xpath = "//div[@class='Suggest-module__destination--17nJ9'][@title='Heliport De Paris, France']")
-    private WebElement suggestDestination;
+
     @FindBy(xpath = " //div[@data-testid='guests-input']")
     private WebElement buttonGuestInput;
-    @FindBy(xpath = "(//*[text()='Adults'] /following::div/button[text()='−'])[1]")
+    @FindBy(xpath = "//div[@class='Room-module__controlBox--EWSMm']//button [contains(text(),'−')]")
     private WebElement buttonAdultMinus;
-    @FindBy(xpath = "(//*[text()='Adults'] /following::div/button[text()='+'])[1]")
+    @FindBy(xpath = "//div[@class='Room-module__controlBox--EWSMm'] //button [contains(text(),'+')]")
     private WebElement buttonAdultPlus;
     @FindBy(xpath = "((//*[text()='Adults'] /following::div/button[text()='−'])[1]/following::div)[1]")
     private WebElement numberOfAdults;
